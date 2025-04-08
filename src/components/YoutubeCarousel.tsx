@@ -6,7 +6,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { SiYoutube } from "react-icons/si";
 import { Card } from "@/components/ui/card";
 
 interface Video {
