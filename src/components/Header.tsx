@@ -19,13 +19,13 @@ const Header: FC = () => {
             <a href="/" className="hover:underline">
               Inicio
             </a>
-            <a href="/videos" className="hover:underline">
+            <a href="#" className="hover:underline">
               Videos
             </a>
-            <a href="/recursos" className="hover:underline">
+            <a href="#" className="hover:underline">
               Recursos
             </a>
-            <a href="/sobre-mi" className="hover:underline">
+            <a href="#" className="hover:underline">
               Sobre mí
             </a>
           </nav>
@@ -44,13 +44,13 @@ const Header: FC = () => {
                 <a href="/" className={cn("text-base font-medium")}>
                   Inicio
                 </a>
-                <a href="/videos" className={cn("text-base font-medium")}>
+                <a href="#" className={cn("text-base font-medium")}>
                   Videos
                 </a>
-                <a href="/recursos" className={cn("text-base font-medium")}>
+                <a href="#" className={cn("text-base font-medium")}>
                   Recursos
                 </a>
-                <a href="/sobre-mi" className={cn("text-base font-medium")}>
+                <a href="#" className={cn("text-base font-medium")}>
                   Sobre mí
                 </a>
               </nav>
