@@ -19,6 +19,8 @@ const Hero: FC = () => {
           <Button asChild size="lg">
             <a
               href="https://www.youtube.com/@andreslopezco/videos"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2"
             >
               Ver videos <ArrowRight className="w-4 h-4" />
