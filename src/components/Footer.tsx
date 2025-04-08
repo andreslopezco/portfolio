@@ -6,20 +6,13 @@ const Footer: FC = () => {
   return (
     <footer className="border-t border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-sm text-muted-foreground">
       {/* Redes sociales */}
-      <div className="container mx-auto px-4 pt-6 pb-4 flex justify-center gap-4">
+      <div className="container mx-auto px-4 py-6 flex justify-center gap-4">
         <a
           href="https://www.youtube.com/andreslopezco"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Youtube className="h-5 w-5 hover:text-foreground transition-colors" />
-        </a>
-        <a
-          href="https://github.com/andreslopezco"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Github className="h-5 w-5 hover:text-foreground transition-colors" />
         </a>
         <a
           href="https://www.instagram.com/andreslopez.co"
@@ -41,6 +34,13 @@ const Footer: FC = () => {
           rel="noopener noreferrer"
         >
           <Music className="h-5 w-5 hover:text-foreground transition-colors" />
+        </a>
+        <a
+          href="https://github.com/andreslopezco"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Github className="h-5 w-5 hover:text-foreground transition-colors" />
         </a>
       </div>
 
