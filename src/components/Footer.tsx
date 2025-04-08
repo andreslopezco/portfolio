@@ -1,5 +1,11 @@
 import type { FC } from "react";
-import { Youtube, Github, Instagram, Twitter, Music } from "lucide-react";
+import {
+  SiYoutube,
+  SiInstagram,
+  SiX,
+  SiTiktok,
+  SiGithub,
+} from "react-icons/si";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const Footer: FC = () => {
@@ -8,39 +14,39 @@ const Footer: FC = () => {
       {/* Redes sociales */}
       <div className="container mx-auto px-4 py-6 flex justify-center gap-4">
         <a
-          href="https://www.youtube.com/andreslopezco"
+          href="https://www.youtube.com/@andreslopezco"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Youtube className="h-5 w-5 hover:text-foreground transition-colors" />
+          <SiYoutube className="h-5 w-5 hover:text-foreground transition-colors" />
         </a>
         <a
           href="https://www.instagram.com/andreslopez.co"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Instagram className="h-5 w-5 hover:text-foreground transition-colors" />
+          <SiInstagram className="h-5 w-5 hover:text-foreground transition-colors" />
         </a>
         <a
           href="https://x.com/andreslopez_co"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Twitter className="h-5 w-5 hover:text-foreground transition-colors" />
+          <SiX className="h-5 w-5 hover:text-foreground transition-colors" />
         </a>
         <a
           href="https://tiktok.com/@andreslopezco"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Music className="h-5 w-5 hover:text-foreground transition-colors" />
+          <SiTiktok className="h-5 w-5 hover:text-foreground transition-colors" />
         </a>
         <a
           href="https://github.com/andreslopezco"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Github className="h-5 w-5 hover:text-foreground transition-colors" />
+          <SiGithub className="h-5 w-5 hover:text-foreground transition-colors" />
         </a>
       </div>
 
