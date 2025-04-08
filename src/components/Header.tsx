@@ -15,17 +15,17 @@ const Header: FC = () => {
 
         {/* Menú desktop */}
         <div className="hidden md:flex items-center gap-6">
-          <nav className="flex gap-6 text-sm font-medium">
+          <nav className="flex gap-6 font-medium">
             <a href="/" className="hover:underline">
               Inicio
             </a>
-            <a href="#" className="hover:underline">
+            <a href="#videos" className="hover:underline">
               Videos
             </a>
             <a href="#" className="hover:underline">
               Recursos
             </a>
-            <a href="#" className="hover:underline">
+            <a href="#about" className="hover:underline">
               Sobre mí
             </a>
           </nav>
@@ -40,17 +40,17 @@ const Header: FC = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[250px]">
-              <nav className="flex flex-col gap-4 mt-6">
+              <nav className="flex flex-col gap-4 mt-6 px-4">
                 <a href="/" className={cn("text-base font-medium")}>
                   Inicio
                 </a>
-                <a href="#" className={cn("text-base font-medium")}>
+                <a href="#videos" className={cn("text-base font-medium")}>
                   Videos
                 </a>
                 <a href="#" className={cn("text-base font-medium")}>
                   Recursos
                 </a>
-                <a href="#" className={cn("text-base font-medium")}>
+                <a href="#about" className={cn("text-base font-medium")}>
                   Sobre mí
                 </a>
               </nav>
