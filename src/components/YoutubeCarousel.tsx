@@ -42,11 +42,8 @@ const YoutubeCarousel = () => {
   if (videos.length === 0) return null;
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-12 flex flex-col items-center">
-      <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2 justify-start self-start">
-        <SiYoutube className="h-6 w-6 text-red-500" />
-        Últimos videos
-      </h2>
+    <section className="w-full mx-auto px-4 py-16 flex flex-col items-center">
+      <h2 className="text-3xl font-bold mb-6 self-start">Últimos videos</h2>
 
       <Carousel className="w-[90%]">
         <CarouselContent>
