@@ -7,6 +7,10 @@ import AboutMe from "@/components/AboutMe"
 
 <Layout title="Andrés López | Tecnología, Servidores, Automatización y más.">
   <Hero />
-  <YoutubeCarousel client:only="react" />
-  <AboutMe />
+  <section id="videos">
+	<YoutubeCarousel client:only="react" />
+  </section>
+  <section id="about">
+	<AboutMe />
+  </section> 
 </Layout>
