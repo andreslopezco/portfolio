@@ -1,0 +1,27 @@
+---
+// Layout.astro
+const { title = "Andrés López | Portafolio" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content="Portafolio de Andrés López, desarrollador y creador de soluciones digitales." />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body class="bg-white text-gray-900 dark:bg-zinc-900 dark:text-white min-h-screen">
+    <header class="w-full border-b border-zinc-200 dark:border-zinc-800 py-4 px-6">
+      <h1 class="text-2xl font-bold">Andrés López</h1>
+    </header>
+
+    <main class="p-6">
+      <slot />
+    </main>
+
+    <footer class="w-full border-t border-zinc-200 dark:border-zinc-800 text-sm text-center py-4 px-6">
+      &copy; {new Date().getFullYear()} Andrés López. Todos los derechos reservados.
+    </footer>
+  </body>
+</html>
