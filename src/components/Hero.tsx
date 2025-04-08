@@ -17,7 +17,10 @@ const Hero: FC = () => {
 
         <div className="flex justify-center">
           <Button asChild size="lg">
-            <a href="/videos" className="flex items-center gap-2">
+            <a
+              href="https://www.youtube.com/@andreslopezco/videos"
+              className="flex items-center gap-2"
+            >
               Ver videos <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
