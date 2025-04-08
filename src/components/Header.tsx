@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const Header: FC = () => {
   return (
@@ -14,7 +13,7 @@ const Header: FC = () => {
           <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
         </a>
 
-        {/* Menú desktop + toggle */}
+        {/* Menú desktop */}
         <div className="hidden md:flex items-center gap-6">
           <nav className="flex gap-6 text-sm font-medium">
             <a href="/" className="hover:underline">
@@ -30,12 +29,10 @@ const Header: FC = () => {
               Sobre mí
             </a>
           </nav>
-          <ThemeToggle />
         </div>
 
-        {/* Mobile toggle + menu */}
+        {/* Mobile menu */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
