@@ -1,34 +1,51 @@
-import type { APIContext } from "astro";
-import { getCachedYoutubeData, setCachedYoutubeData } from "@/lib/cache";
+import { getYoutubeCache, setYoutubeCache } from "@/lib/cache";
 
-const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
-const CHANNEL_ID = import.meta.env.YOUTUBE_CHANNEL_ID;
+export async function GET() {
+  try {
+    const cached = getYoutubeCache();
+    if (cached) {
+      console.log("✅ Sirviendo desde caché");
+      return new Response(JSON.stringify(cached), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
-export async function GET({ request }: APIContext) {
-  const cached = getCachedYoutubeData();
-  if (cached) {
-    return new Response(JSON.stringify(cached), {
+    const apiKey = import.meta.env.YOUTUBE_API_KEY;
+    const channelId = import.meta.env.YOUTUBE_CHANNEL_ID;
+
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (!res.ok) {
+      console.error("❌ API YouTube Error:", data);
+
+      // Fallback a caché vieja si existe
+      const fallback = getYoutubeCache(true); // modo forzado
+      if (fallback) {
+        return new Response(JSON.stringify(fallback), {
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
+      return new Response(
+        JSON.stringify({ error: "YouTube API error", details: data }),
+        { status: 500 }
+      );
+    }
+
+    setYoutubeCache(data);
+    console.log("✅ Nueva caché guardada");
+
+    return new Response(JSON.stringify(data), {
       headers: { "Content-Type": "application/json" },
     });
-  }
-
-  const res = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=6`
-  );
-
-  if (!res.ok) {
+  } catch (err) {
+    console.error("❌ Error general:", err);
     return new Response(
       JSON.stringify({ error: "Failed to fetch YouTube data" }),
-      {
-        status: 500,
-      }
+      { status: 500 }
     );
   }
-
-  const data = await res.json();
-  setCachedYoutubeData(data);
-
-  return new Response(JSON.stringify(data), {
-    headers: { "Content-Type": "application/json" },
-  });
 }
