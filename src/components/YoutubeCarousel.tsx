@@ -42,16 +42,19 @@ const YoutubeCarousel = () => {
   if (videos.length === 0) return null;
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-12">
-      <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2 justify-start">
+    <section className="w-full max-w-6xl mx-auto px-4 py-12 flex flex-col items-center">
+      <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2 justify-start self-start">
         <SiYoutube className="h-6 w-6 text-red-500" />
         Últimos videos
       </h2>
 
-      <Carousel className="w-full">
+      <Carousel className="w-[90%]">
         <CarouselContent>
           {videos.map((video) => (
-            <CarouselItem key={video.id} className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem
+              key={video.id}
+              className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3"
+            >
               <a
                 href={`https://www.youtube.com/watch?v=${video.id}`}
                 target="_blank"
