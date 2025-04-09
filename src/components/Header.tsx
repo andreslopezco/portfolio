@@ -22,9 +22,6 @@ const Header: FC = () => {
             <a href="#videos" className="hover:underline">
               Videos
             </a>
-            <a href="#" className="hover:underline">
-              Recursos
-            </a>
             <a href="#about" className="hover:underline">
               Sobre mí
             </a>
@@ -46,9 +43,6 @@ const Header: FC = () => {
                 </a>
                 <a href="#videos" className={cn("text-base font-medium")}>
                   Videos
-                </a>
-                <a href="#" className={cn("text-base font-medium")}>
-                  Recursos
                 </a>
                 <a href="#about" className={cn("text-base font-medium")}>
                   Sobre mí
