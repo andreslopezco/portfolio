@@ -5,7 +5,7 @@ const AboutMe = () => {
     <div className="grid md:grid-cols-2 gap-8 items-start" aria-label="Información sobre mí">
       {/* Sección izquierda: Texto */}
       <div>
-        <h2 className="text-3xl font-bold mb-4 text-primary">Sobre mí</h2>
+        <h2 className="text-3xl font-bold mb-4 text-foreground">Sobre mí</h2>
         <p className="text-muted-foreground text-base leading-relaxed mb-6">
           ¡Hola! Soy Andrés. Desde pequeño me ha encantado la tecnología,
           experimenté con radios virtuales, producción musical y diseño web. Hoy
