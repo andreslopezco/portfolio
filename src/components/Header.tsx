@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { FC } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
@@ -5,8 +6,30 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const Header: FC = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      const scrolledEnough = Math.abs(currentScrollY - lastScrollY) > 5;
+
+      if (scrolledEnough) {
+        setIsVisible(!scrollingDown || currentScrollY < 100);
+        setLastScrollY(currentScrollY);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className={cn(
+      "fixed top-0 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-transform duration-500 ease-in-out z-50",
+      !isVisible && "-translate-y-full"
+    )}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo + texto */}
         <a href="/" className="flex items-center gap-2">
