@@ -11,12 +11,12 @@ const Header: FC = () => {
         {/* Logo + texto */}
         <a href="/" className="flex items-center gap-2">
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="Logo"
             className="h-14 w-auto dark:block hidden"
           />
           <img
-            src="/logo-light.png"
+            src="/logo-light.webp"
             alt="Logo"
             className="h-14 w-auto dark:hidden block"
           />
