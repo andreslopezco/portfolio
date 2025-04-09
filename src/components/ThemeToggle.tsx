@@ -28,8 +28,9 @@ export default function ThemeToggle() {
   };
 
   return (
-    <Button variant="outline" size="icon" onClick={toggleTheme}>
-      {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+    <Button variant="outline" size="icon" onClick={toggleTheme} className="relative w-10 h-10 flex items-center justify-center">
+      <Sun className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-200 ${isDark ? 'scale-100 rotate-0 opacity-100' : 'scale-0 rotate-90 opacity-0'}`} />
+      <Moon className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-200 ${!isDark ? 'scale-100 rotate-0 opacity-100' : 'scale-0 -rotate-90 opacity-0'}`} />
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
