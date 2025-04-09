@@ -21,15 +21,20 @@ const Hero: FC = () => {
         </p>
 
         <div className="flex justify-center">
-          <Button asChild size="lg">
+          <Button 
+            size="lg" 
+            className="relative group/btn overflow-hidden" 
+            asChild
+          >
             <a
               href="https://www.youtube.com/@andreslopezco/videos"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 relative"
               aria-label="Ver videos en YouTube"
             >
-              Ver videos <ArrowRight className="w-4 h-4" />
+              <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 ease-out" />
+              Ver videos <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 duration-300" />
             </a>
           </Button>
         </div>
