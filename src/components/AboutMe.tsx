@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const AboutMe = () => {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-start" aria-label="Información sobre mí">
+    <div className="grid md:grid-cols-2 gap-8 items-start" aria-label="Información sobre mí">
       {/* Sección izquierda: Texto */}
       <div>
         <h2 className="text-3xl font-bold mb-4 text-primary">Sobre mí</h2>
@@ -46,7 +46,7 @@ const AboutMe = () => {
           </CardContent>
         </Card>
       </div>
-    </section>
+    </div>
   );
 };
 

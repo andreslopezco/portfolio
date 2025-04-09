@@ -41,7 +41,7 @@ const YoutubeCarousel = () => {
   if (videos.length === 0) return null;
 
   return (
-    <section className="w-full mx-auto px-4 py-16 flex flex-col items-center" aria-label="Carrusel de videos de YouTube">
+    <div className="w-full flex flex-col items-center" aria-label="Carrusel de videos de YouTube">
       <h2 className="text-3xl font-bold mb-6 self-start">Últimos videos</h2>
 
       <Carousel className="w-[90%]">
@@ -74,7 +74,7 @@ const YoutubeCarousel = () => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-    </section>
+    </div>
   );
 };
 
