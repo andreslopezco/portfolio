@@ -5,7 +5,7 @@ import ParticlesComponent from "./Particles";
 
 const Hero: FC = () => {
   return (
-    <section className="relative text-foreground w-full" aria-label="Presentación principal">
+    <section id="home" className="relative text-foreground w-full" aria-label="Presentación principal">
       <div className="absolute inset-0 w-full h-full">
         <ParticlesComponent />
       </div>

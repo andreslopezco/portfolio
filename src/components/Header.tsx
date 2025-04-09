@@ -4,6 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 const Header: FC = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -47,17 +54,25 @@ const Header: FC = () => {
 
         {/* Menú desktop */}
         <div className="hidden md:flex items-center gap-6">
-          <nav className="flex gap-6 font-medium">
-            <a href="/" className="hover:underline">
-              Inicio
-            </a>
-            <a href="#videos" className="hover:underline">
-              Videos
-            </a>
-            <a href="#about" className="hover:underline">
-              Sobre mí
-            </a>
-          </nav>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} href="#home">
+                  Inicio
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} href="#videos">
+                  Videos
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} href="#about">
+                  Sobre mí
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         {/* Mobile menu */}
@@ -70,7 +85,7 @@ const Header: FC = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[250px]">
               <nav className="flex flex-col gap-4 mt-6 px-4">
-                <a href="/" className={cn("text-base font-medium")}>
+                <a href="#home" className={cn("text-base font-medium")}>
                   Inicio
                 </a>
                 <a href="#videos" className={cn("text-base font-medium")}>
