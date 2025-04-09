@@ -5,12 +5,12 @@ import ParticlesComponent from "./Particles";
 
 const Hero: FC = () => {
   return (
-    <section id="home" className="relative text-foreground w-full" aria-label="Presentación principal">
+    <section id="home" className="relative text-foreground w-full min-h-[90vh] flex items-center" aria-label="Presentación principal">
       <div className="absolute inset-0 w-full h-full">
         <ParticlesComponent />
       </div>
-      <div className="relative z-10 py-20 md:py-32 text-center">
-        <div className="container mx-auto px-4 max-w-3xl">
+      <div className="container mx-auto px-4 relative z-10 h-full flex items-center justify-center">
+        <div className="max-w-3xl text-center">
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
           ¡Hola, soy Andrés 👋!
         </h1>
