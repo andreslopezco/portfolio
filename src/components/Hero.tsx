@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const Hero: FC = () => {
   return (
-    <section className="text-foreground py-20 md:py-32 text-center">
+    <section className="text-foreground py-20 md:py-32 text-center" aria-label="Presentación principal">
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
           ¡Hola, soy Andrés 👋!
@@ -22,6 +22,7 @@ const Hero: FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"
+              aria-label="Ver videos en YouTube"
             >
               Ver videos <ArrowRight className="w-4 h-4" />
             </a>

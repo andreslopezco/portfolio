@@ -41,7 +41,7 @@ const YoutubeCarousel = () => {
   if (videos.length === 0) return null;
 
   return (
-    <section className="w-full mx-auto px-4 py-16 flex flex-col items-center">
+    <section className="w-full mx-auto px-4 py-16 flex flex-col items-center" aria-label="Carrusel de videos de YouTube">
       <h2 className="text-3xl font-bold mb-6 self-start">Últimos videos</h2>
 
       <Carousel className="w-[90%]">
@@ -55,6 +55,7 @@ const YoutubeCarousel = () => {
                 href={`https://www.youtube.com/watch?v=${video.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Ver video: ${video.title}`}
               >
                 <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col py-0 gap-0">
                   <img
