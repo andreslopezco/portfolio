@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import ParticlesComponent from "./Particles";
+import FadeIn from "./FadeIn";
 
 const Hero: FC = () => {
   return (
@@ -11,16 +12,21 @@ const Hero: FC = () => {
       </div>
       <div className="container mx-auto px-4 relative z-10 h-full flex items-center justify-center">
         <div className="max-w-3xl text-center">
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-          ¡Hola, soy Andrés 👋!
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground mb-8">
-          Comparto contenido sobre tecnología, servidores, homelabs,
-          automatizaciones con IA y mucho más. Acompáñame en esta aventura para
-          crear soluciones increíbles. 🚀
-        </p>
+          <FadeIn>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+              ¡Hola, soy Andrés 👋!
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8">
+              Comparto contenido sobre tecnología, servidores, homelabs,
+              automatizaciones con IA y mucho más. Acompáñame en esta aventura para
+              crear soluciones increíbles. 🚀
+            </p>
+          </FadeIn>
 
-        <div className="flex justify-center">
+          <FadeIn delay={0.4}>
+            <div className="flex justify-center">
           <Button 
             size="lg" 
             className="relative group/btn overflow-hidden" 
@@ -37,7 +43,8 @@ const Hero: FC = () => {
               Ver videos <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 duration-300" />
             </a>
           </Button>
-        </div>
+            </div>
+          </FadeIn>
       </div>
     </div>
     </section>
