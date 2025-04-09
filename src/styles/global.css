@@ -41,6 +41,14 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+* {
+  transition: background-color 300ms ease-in-out,
+              border-color 300ms ease-in-out,
+              color 300ms ease-in-out,
+              fill 300ms ease-in-out,
+              stroke 300ms ease-in-out;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
