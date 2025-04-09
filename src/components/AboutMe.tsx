@@ -41,7 +41,7 @@ const AboutMe = () => {
                   <img
                     src="/profile.webp"
                     alt="Andrés López"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 {/* Decorative Elements */}
