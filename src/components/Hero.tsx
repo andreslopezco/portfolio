@@ -1,11 +1,16 @@
 import type { FC } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import ParticlesComponent from "./Particles";
 
 const Hero: FC = () => {
   return (
-    <section className="text-foreground py-20 md:py-32 text-center" aria-label="Presentación principal">
-      <div className="container mx-auto px-4 max-w-3xl">
+    <section className="relative text-foreground w-full" aria-label="Presentación principal">
+      <div className="absolute inset-0 w-full h-full">
+        <ParticlesComponent />
+      </div>
+      <div className="relative z-10 py-20 md:py-32 text-center">
+        <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
           ¡Hola, soy Andrés 👋!
         </h1>
@@ -29,6 +34,7 @@ const Hero: FC = () => {
           </Button>
         </div>
       </div>
+    </div>
     </section>
   );
 };

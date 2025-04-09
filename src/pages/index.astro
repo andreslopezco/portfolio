@@ -6,11 +6,13 @@ import AboutMe from "@/components/AboutMe"
 ---
 
 <Layout title="Andrés López | Tecnología, Servidores, Automatización y más.">
-  <Hero />
-  <section id="videos" aria-label="Últimos videos">
-	<YoutubeCarousel client:only="react" />
-  </section>
-  <section id="about" aria-label="Información sobre mí">
-	<AboutMe />
-  </section> 
+  <Hero client:load />
+  <div class="container mx-auto max-w-5xl px-4 md:px-6 py-12">
+    <section id="videos" aria-label="Últimos videos">
+      <YoutubeCarousel client:only="react" />
+    </section>
+    <section id="about" aria-label="Información sobre mí">
+      <AboutMe />
+    </section>
+  </div> 
 </Layout>
