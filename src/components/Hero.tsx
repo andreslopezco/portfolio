@@ -10,7 +10,7 @@ const Hero: FC = () => {
           ¡Hola, soy Andrés 👋!
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground mb-8">
-          Comparto contenido sobre tecnología, servidores VPS, homelabs,
+          Comparto contenido sobre tecnología, servidores, homelabs,
           automatizaciones con IA y mucho más. Acompáñame en esta aventura para
           crear soluciones increíbles. 🚀
         </p>
