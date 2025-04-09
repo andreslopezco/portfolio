@@ -1,24 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Section from "../components/Section.astro";
-import Hero from "../components/Hero.astro";
-import Experience from "../components/Experience.astro";
-import Project from "../components/Project.astro";
+import Hero from "@/components/Hero";
+import YoutubeCarousel from "@/components/YoutubeCarousel";
+import AboutMe from "@/components/AboutMe"
 ---
 
-<Layout
-  title="Andres Lopez | Front-End Developer"
-  description="Welcome to the portfolio of Andres López, a Junior Front-End Developer based in Bogotá, Colombia. Passionate about crafting visually stunning websites, Andres specializes in WordPress, Elementor, HTML, CSS, JavaScript, and Astro. Explore his latest projects and extensive freelance experience, and connect with him to discuss your next web development project. Available for hire. 🚀"
->
-  <Section id="home" class="pt-28 pb-28">
-    <Hero />
-  </Section>
-  <Section id="experience" class="pb-28">
-    <h2 class="mb-10 text-3xl font-bold text-balance">Work Experience</h2>
-    <Experience />
-  </Section>
-  <Section id="projects" class="pb-28">
-    <h2 class="mb-10 text-3xl font-bold text-balance">Latest Projects</h2>
-    <Project />
-  </Section>
+<Layout title="Andrés López | Tecnología, Servidores, Automatización y más.">
+  <Hero />
+  <section id="videos">
+	<YoutubeCarousel client:only="react" />
+  </section>
+  <section id="about">
+	<AboutMe />
+  </section> 
 </Layout>

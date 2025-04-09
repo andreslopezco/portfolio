@@ -1,73 +1,27 @@
 ---
-import "@fontsource/poppins/100.css";
-import "@fontsource/poppins/200.css";
-import "@fontsource/poppins/300.css";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/500.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
-import "@fontsource/poppins/800.css";
-import "@fontsource/poppins/900.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-interface Props {
-  title: string;
-  description: string;
-}
-
-const { title, description } = Astro.props;
+// Layout.astro
+import "../styles/global.css";
+import Header from "../components/Header"
+import Footer from "@/components/Footer";
+const { title = "Andrés López | Portafolio" } = Astro.props;
 ---
-
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content="Portafolio de Andrés López, desarrollador y creador de soluciones digitales." />
+    <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
-  <body class="bg-[--color-2] text-[--color-3]">
-    <div
-      class="absolute top-0 z-[-2] h-full w-full bg-[--color-2] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    >
-    </div>
-    <Header />
-    <main class="flex flex-col items-center">
-      <slot />
-      <Footer />
+  <body class="min-h-screen antialiased">
+    
+    <Header client:load />
+
+    <main class="container mx-auto max-w-5xl px-4 md:px-6 py-12 flex flex-col gap-8">
+        <slot />
     </main>
+
+    <Footer client:load />
   </body>
 </html>
-
-<style is:global>
-  :root {
-    color-scheme: dark;
-
-    --color-1: #7e57c2;
-    --color-2: #090c08;
-    --color-3: #f1f2f6;
-    --color-4: #baff29;
-    --color-5: #f05d23;
-
-    --color-github: #f1502f;
-    --color-telegram: #1d98dc;
-  }
-
-  * {
-    box-sizing: border-box;
-    min-width: 0;
-  }
-
-  html {
-    font-family: "Poppins", sans-serif;
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-</style>
