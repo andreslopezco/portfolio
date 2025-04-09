@@ -41,6 +41,36 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.header-visible {
+  animation: slideDown 300ms ease-in-out forwards;
+}
+
+.header-hidden {
+  animation: slideUp 300ms ease-in-out forwards;
+}
+
 * {
   transition: background-color 300ms ease-in-out,
               border-color 300ms ease-in-out,
@@ -51,6 +81,7 @@
 
 :root {
   --radius: 0.625rem;
+  --header-transition: 300ms;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);

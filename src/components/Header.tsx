@@ -13,7 +13,7 @@ const Header: FC = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY;
-      const scrolledEnough = Math.abs(currentScrollY - lastScrollY) > 5;
+      const scrolledEnough = Math.abs(currentScrollY - lastScrollY) > 10;
 
       if (scrolledEnough) {
         setIsVisible(!scrollingDown || currentScrollY < 100);
@@ -27,9 +27,9 @@ const Header: FC = () => {
 
   return (
     <header className={cn(
-      "fixed top-0 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-transform duration-500 ease-in-out z-50",
-      !isVisible && "-translate-y-full"
-    )}>
+        "fixed top-0 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50",
+        isVisible ? "header-visible" : "header-hidden"
+      )}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo + texto */}
         <a href="/" className="flex items-center gap-2">
