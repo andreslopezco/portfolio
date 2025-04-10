@@ -1,0 +1,52 @@
+---
+import { cn } from "@/utils/utils";
+import HeaderScroll from "./HeaderScroll.astro";
+import NavigationMenuComponent from "./NavigationMenuComponent";
+import MobileMenuComponent from "./MobileMenuComponent";
+---
+
+<header
+  id="header"
+  class="fixed top-0 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 header-visible"
+>
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo + texto -->
+    <a href="/" class="flex items-center gap-2">
+      <img
+        src="/logo.webp"
+        alt="Logo"
+        class="h-14 w-auto dark:block hidden"
+      />
+      <img
+        src="/logo-light.webp"
+        alt="Logo"
+        class="h-14 w-auto dark:hidden block"
+      />
+    </a>
+
+    <!-- Menú desktop -->
+    <div class="hidden md:flex items-center gap-6">
+      <NavigationMenuComponent client:load />
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden flex items-center gap-2">
+      <MobileMenuComponent client:load />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header-visible {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .header-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+  }
+</style>
+
+<!-- Importamos el componente que maneja la lógica de scroll -->
+<HeaderScroll />
