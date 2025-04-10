@@ -1,0 +1,11 @@
+---
+import FadeIn from "@/components/react/FadeIn"
+import YoutubeCarousel from "@/components/react/YoutubeCarousel"
+---
+
+<div class="w-full" aria-label="Carrusel de videos de YouTube">
+    <FadeIn client:load>
+        <h2 class="text-3xl font-bold mb-6">Últimos videos</h2>
+    <YoutubeCarousel client:load />
+    </FadeIn>
+</div>
