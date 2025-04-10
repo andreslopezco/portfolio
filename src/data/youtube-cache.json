@@ -1,8 +1,8 @@
 {
-  "timestamp": 1744196401939,
+  "timestamp": 1744315492639,
   "data": {
     "kind": "youtube#searchListResponse",
-    "etag": "9SrGjA8JNaoAth75R3BeF9wRm28",
+    "etag": "MB9QvP3GzqbB_Et9jR-a7tIwnzs",
     "regionCode": "CO",
     "pageInfo": {
       "totalResults": 1,
@@ -11,7 +11,7 @@
     "items": [
       {
         "kind": "youtube#searchResult",
-        "etag": "zuQgMptFmnJJds92rgAjj3z02i8",
+        "etag": "tMKMTTY8_WdOMD9oFM8GroX40hQ",
         "id": {
           "kind": "youtube#channel",
           "channelId": "UC3kR6DC7_0hND8MxofVntOQ"
@@ -20,16 +20,16 @@
           "publishedAt": "2010-09-04T02:44:57Z",
           "channelId": "UC3kR6DC7_0hND8MxofVntOQ",
           "title": "Andrés López",
-          "description": "",
+          "description": "Soy Andrés López, y en este canal comparto tutoriales, recursos y soluciones prácticas para ayudarte a optimizar tu negocio o tu ...",
           "thumbnails": {
             "default": {
-              "url": "https://yt3.ggpht.com/ytc/AIdro_nzf_38osY0eh7aPQbfKu6wRof-DTAs7pSaNm9ZMqGPUJFfWyS5SFzzSHFBOz2qGsV8gw=s88-c-k-c0xffffffff-no-rj-mo"
+              "url": "https://yt3.ggpht.com/2xU1g1Wr7j-H65gyIdPiWDGmBBpt9As6PDep3fN1JN7YHIHSXr9zpXTsvkpsRHq14zXwulEVNg=s88-c-k-c0xffffffff-no-rj-mo"
             },
             "medium": {
-              "url": "https://yt3.ggpht.com/ytc/AIdro_nzf_38osY0eh7aPQbfKu6wRof-DTAs7pSaNm9ZMqGPUJFfWyS5SFzzSHFBOz2qGsV8gw=s240-c-k-c0xffffffff-no-rj-mo"
+              "url": "https://yt3.ggpht.com/2xU1g1Wr7j-H65gyIdPiWDGmBBpt9As6PDep3fN1JN7YHIHSXr9zpXTsvkpsRHq14zXwulEVNg=s240-c-k-c0xffffffff-no-rj-mo"
             },
             "high": {
-              "url": "https://yt3.ggpht.com/ytc/AIdro_nzf_38osY0eh7aPQbfKu6wRof-DTAs7pSaNm9ZMqGPUJFfWyS5SFzzSHFBOz2qGsV8gw=s800-c-k-c0xffffffff-no-rj-mo"
+              "url": "https://yt3.ggpht.com/2xU1g1Wr7j-H65gyIdPiWDGmBBpt9As6PDep3fN1JN7YHIHSXr9zpXTsvkpsRHq14zXwulEVNg=s800-c-k-c0xffffffff-no-rj-mo"
             }
           },
           "channelTitle": "Andrés López",
