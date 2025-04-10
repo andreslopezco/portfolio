@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "@/components/Hero";
+import Hero from "@/components/Hero.astro";
 import YoutubeCarousel from "@/components/YoutubeCarousel";
 import AboutMe from "@/components/AboutMe.astro"
 ---
 
 <Layout title="Andrés López | Tecnología, Servidores, Automatización y más.">
   {/* Hero section - full width */}
-  <Hero client:load />
+  <Hero />
 
   {/* Content sections - constrained width */}
   <div class="flex flex-col gap-16">
