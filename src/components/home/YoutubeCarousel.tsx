@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card } from "@/components/ui/card";
-import FadeIn from "./FadeIn";
+import FadeIn from "@/components/react/FadeIn";
 
 interface Video {
   id: string;

@@ -1,8 +1,8 @@
 ---
 import { cn } from "@/utils/utils";
-import HeaderScroll from "./HeaderScroll.astro";
-import NavigationMenuComponent from "./NavigationMenuComponent";
-import MobileMenuComponent from "./MobileMenuComponent";
+import HeaderScroll from "@/components/global/HeaderScroll.astro";
+import MainNavigation from "@/components/react/MainNavigation";
+import MobileMenu from "@/components/react/MobileMenu";
 ---
 
 <header
@@ -26,12 +26,12 @@ import MobileMenuComponent from "./MobileMenuComponent";
 
     <!-- Menú desktop -->
     <div class="hidden md:flex items-center gap-6">
-      <NavigationMenuComponent client:load />
+      <MainNavigation client:load />
     </div>
 
     <!-- Mobile menu -->
     <div class="md:hidden flex items-center gap-2">
-      <MobileMenuComponent client:load />
+      <MobileMenu client:load />
     </div>
   </div>
 </header>
