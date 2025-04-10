@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -28,15 +28,17 @@ const Header: FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
-    <header className={cn(
+    <header
+      className={cn(
         "fixed top-0 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50",
         isVisible ? "header-visible" : "header-hidden"
-      )}>
+      )}
+    >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo + texto */}
         <a href="/" className="flex items-center gap-2">
@@ -57,17 +59,26 @@ const Header: FC = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} href="#home">
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  href="#home"
+                >
                   Inicio
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} href="#videos">
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  href="#videos"
+                >
                   Videos
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} href="#about">
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  href="#about"
+                >
                   Sobre mí
                 </NavigationMenuLink>
               </NavigationMenuItem>

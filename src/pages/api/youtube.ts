@@ -1,4 +1,4 @@
-import { getYoutubeCache, setYoutubeCache } from "@/lib/cache";
+import { getYoutubeCache, setYoutubeCache } from "@/utils/cache";
 
 export async function GET() {
   try {
