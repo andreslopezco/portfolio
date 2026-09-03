@@ -13,8 +13,9 @@ No se abre ningún pull request sin ejecutar desde una instalación limpia `npm 
 - Las interacciones se implementan como islas React en `src/components/react/`; los componentes visuales reutilizables están en `src/components/ui/`.
 - `src/pages/api/version.ts` y `src/pages/api/youtube.ts` prerenderizan durante el build archivos JSON de solo lectura. El primero consulta GitHub; el segundo usa YouTube y la caché `src/data/youtube-cache.json` mediante `src/utils/cache.ts`. En el hosting estático se sirven como `GET 200` cuando el archivo existe; un fallo externo durante el build puede quedar representado mediante un campo `error` en el cuerpo. Cambian al reconstruir/desplegar, no por ejecución server-side en cada request.
 - `src/styles/global.css` y `tailwind.config.mjs` contienen el sistema visual. Los archivos estáticos se publican desde `public/`.
-- `vercel.json` configura comportamiento del borde que un build estático no puede expresar por sí solo: headers de descubrimiento, tipos MIME/CORS específicos y negociación `Accept: text/markdown`.
-- `api/mcp.js` y `api/a2a.js` son funciones Node de Vercel independientes del build estático de Astro. La lógica testeable vive en `src/protocols/`: MCP es Streamable HTTP stateless `2025-06-18` y A2A usa el binding JSON-RPC 1.0; ambos son públicos y de solo lectura.
+- Producción se despliega en Dokploy con `Dockerfile`. `server.mjs`, sin dependencias externas, sirve `dist/`, aplica headers/MIME y negociación `Accept: text/markdown`, y enruta MCP/A2A. El contenedor escucha en `PORT` (3000 por defecto) y expone `/healthz`.
+- `vercel.json` conserva el comportamiento equivalente para despliegues alternativos en Vercel; no gobierna la producción de Dokploy.
+- `api/mcp.js` y `api/a2a.js` son handlers Node compartidos por el servidor de producción y las funciones Vercel. La lógica testeable vive en `src/protocols/`: MCP es Streamable HTTP stateless `2025-06-18` y A2A usa el binding JSON-RPC 1.0; ambos son públicos y de solo lectura.
 
 ## Rutas clave agent-ready
 
@@ -43,7 +44,7 @@ npm run build
 npm run preview
 ```
 
-No hay script de lint. `npm test` invoca directamente los handlers Vercel MCP/A2A y comprueba negociación, descubrimiento, llamadas útiles, validación y errores. `scripts/verify-agent-ready.mjs` usa solo módulos estándar de Node y valida JSON, XML/texto, digests, cards, configuración Vercel y la ausencia de anuncios engañosos.
+No hay script de lint. `npm test` prueba directamente los handlers MCP/A2A y levanta `server.mjs` en un puerto efímero para verificar HTTP real, negociación, MIME, seguridad, descubrimiento y errores. `scripts/verify-agent-ready.mjs` usa solo módulos estándar de Node y valida JSON, XML/texto, digests, cards, Docker/server, configuración Vercel y la ausencia de anuncios engañosos.
 
 ## Mantenimiento de artefactos agent-ready
 
@@ -52,5 +53,5 @@ No hay script de lint. `npm test` invoca directamente los handlers Vercel MCP/A2
 3. Al editar un `SKILL.md`, recalcula exactamente sobre sus bytes publicados `sha256sum public/.well-known/agent-skills/<name>/SKILL.md` y reemplaza el digest `sha256:<hex>` en el índice.
 4. Cada entrada ARD debe describir un recurso real, usar un MIME de IANA, tener exactamente uno de `url` o `data` y entre 2 y 5 consultas representativas.
 5. Mantén `robots.txt` coherente con la política del propietario; no cambies permisos de entrenamiento o rastreo como optimización de puntuación.
-6. Verifica localmente con `npm run verify:agent-ready`, construye y comprueba en preview que los archivos estén en `dist/`. Tras desplegar, confirma headers y tipos MIME con `curl` y vuelve a ejecutar el escáner público.
-7. La negociación Markdown y los headers dependen de `vercel.json`; si cambia el proveedor de hosting, hay que reimplementar y probar esa lógica en el nuevo borde.
+6. Verifica localmente con `npm run verify:agent-ready`, construye y comprueba con `npm start` que los archivos estén en `dist/`. Si Docker está disponible, construye y prueba también la imagen. Tras desplegar, confirma headers, MIME, MCP/A2A y negociación con `curl`, y vuelve a ejecutar el escáner público.
+7. En Dokploy selecciona el `Dockerfile` como Build Type y enruta el dominio al puerto interno 3000. Nginx/proxy debe preservar `Accept`, `Link`, `Vary` y `Content-Type`, y no debe sustituir los 404 del contenedor por un fallback HTML.

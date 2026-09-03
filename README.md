@@ -27,6 +27,15 @@ npm run dev
 
 Esto iniciará un servidor de desarrollo y podrás acceder al portafolio en `http://localhost:4321`.
 
+Para servir el build como en producción:
+
+```bash
+npm run build
+npm start
+```
+
+El servidor Node escucha en `PORT` (3000 por defecto), sirve los archivos estáticos de `dist`, expone MCP/A2A y ofrece el healthcheck `/healthz`. Producción usa el `Dockerfile`: en Dokploy se debe elegir **Dockerfile** como Build Type y configurar el puerto interno `3000`.
+
 ## Contribuciones
 
 Las contribuciones son bienvenidas. Si deseas contribuir, por favor abre un issue o envía un pull request.

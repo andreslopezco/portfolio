@@ -9,4 +9,4 @@ La API es de solo lectura y no requiere autenticación.
 
 El contrato completo está en `/openapi.json`. Los datos se actualizan al volver a construir/desplegar el sitio; no se ofrecen operaciones de escritura.
 
-Los dos endpoints GET son archivos JSON prerenderizados: si un proveedor externo falla durante el build, el cuerpo generado puede contener un campo `error`. MCP y A2A son funciones Node stateless de Vercel y se ejecutan por solicitud, sin escritura ni dependencia de servicios externos.
+Los dos endpoints GET son archivos JSON prerenderizados: si un proveedor externo falla durante el build, el cuerpo generado puede contener un campo `error`. MCP y A2A son handlers Node stateless ejecutados por solicitud en el contenedor de producción, sin escritura ni dependencia de servicios externos.
