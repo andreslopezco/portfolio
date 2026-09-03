@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = resolve(import.meta.dirname, "..");
+const root = resolve(fileURLToPath(new URL(".", import.meta.url)), "..");
 const read = (path) => readFileSync(resolve(root, path), "utf8");
 const json = (path) => JSON.parse(read(path));
 
@@ -105,10 +106,12 @@ assert.match(server, /api\/mcp/);
 assert.match(server, /api\/a2a/);
 assert.match(server, /healthz/);
 const nixpacks = read("nixpacks.toml");
+assert.match(nixpacks, /NIXPACKS_NODE_VERSION\s*=\s*"18\.20\.5"/);
 assert.match(nixpacks, /\[phases\.install\][\s\S]*cmds\s*=\s*\["npm ci"\]/);
 assert.match(nixpacks, /\[phases\.build\][\s\S]*cmds\s*=\s*\["npm run build"\]/);
 assert.match(nixpacks, /\[start\][\s\S]*cmd\s*=\s*"npm start"/);
 assert.equal(json("package.json").scripts?.start, "node server.mjs");
+assert.equal(json("package.json").engines?.node, ">=18.20.5");
 for (const obsolete of ["Dockerfile", ".dockerignore"]) {
   assert.ok(!existsSync(resolve(root, obsolete)), `No debe existir ${obsolete}: producción usa Nixpacks`);
 }

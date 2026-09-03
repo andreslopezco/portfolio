@@ -1,9 +1,15 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
 import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { createServer as createNetServer } from "node:net";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 import { createPortfolioServer } from "../server.mjs";
+
+const projectRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 
 async function withServer(run) {
   const root = await mkdtemp(join(tmpdir(), "portfolio-server-"));
@@ -30,6 +36,55 @@ async function withServer(run) {
 }
 
 const rpc = (id, method, params = {}) => ({ jsonrpc: "2.0", id, method, params });
+
+async function availablePort() {
+  const server = createNetServer();
+  await new Promise((resolve, reject) => server.listen(0, "127.0.0.1", resolve).once("error", reject));
+  const { port } = server.address();
+  await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+  return port;
+}
+
+test("production entry point boots and serves /healthz", async () => {
+  const dist = join(projectRoot, "dist");
+  const createdDist = !existsSync(dist);
+  if (createdDist) {
+    await mkdir(dist);
+    await writeFile(join(dist, "index.html"), "<!doctype html><title>Portfolio</title>");
+  }
+
+  const port = await availablePort();
+  const child = spawn(process.execPath, ["server.mjs"], {
+    cwd: projectRoot,
+    env: { ...process.env, PORT: String(port) },
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  let stderr = "";
+  child.stderr.setEncoding("utf8").on("data", (chunk) => { stderr += chunk; });
+
+  try {
+    await new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => reject(new Error(`Server did not start: ${stderr}`)), 5000);
+      child.once("exit", (code) => {
+        clearTimeout(timeout);
+        reject(new Error(`Server exited with code ${code}: ${stderr}`));
+      });
+      child.stdout.setEncoding("utf8").on("data", (chunk) => {
+        if (chunk.includes("Portfolio server listening")) {
+          clearTimeout(timeout);
+          resolve();
+        }
+      });
+    });
+    const response = await fetch(`http://127.0.0.1:${port}/healthz`);
+    assert.equal(response.status, 200);
+    assert.equal(await response.text(), "ok\n");
+  } finally {
+    child.kill("SIGTERM");
+    await new Promise((resolve) => child.once("exit", resolve));
+    if (createdDist) await rm(dist, { recursive: true, force: true });
+  }
+});
 
 test("HTTP server negotiates Markdown and exposes discovery headers for GET and HEAD", () => withServer(async (base) => {
   const html = await fetch(`${base}/`);

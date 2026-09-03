@@ -2,6 +2,9 @@
   "name": "portfolio",
   "type": "module",
   "version": "2.0.2",
+  "engines": {
+    "node": ">=18.20.5"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "node server.mjs",
