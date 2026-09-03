@@ -3,7 +3,7 @@
   "info": {
     "title": "API pública del portafolio de Andrés López",
     "version": "2.0.2",
-    "description": "Instantáneas públicas de solo lectura generadas durante el build del portafolio. No requieren autenticación."
+    "description": "Interfaces públicas de solo lectura del portafolio. Incluye instantáneas estáticas y servidores MCP y A2A stateless en funciones Vercel. No requieren autenticación."
   },
   "servers": [{ "url": "https://andreslopez.co" }],
   "paths": {
@@ -39,6 +39,37 @@
           }
         }
       }
+    },
+    "/api/mcp": {
+      "post": {
+        "summary": "Invoca el servidor MCP Streamable HTTP stateless",
+        "description": "Acepta JSON-RPC 2.0 de MCP 2025-06-18. Implementa initialize, ping, tools/list y tools/call.",
+        "operationId": "callPortfolioMcp",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/JsonRpcRequest" } } }
+        },
+        "responses": {
+          "200": { "description": "Respuesta JSON-RPC", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } },
+          "202": { "description": "Notificación MCP aceptada sin cuerpo" },
+          "400": { "description": "JSON, petición o versión de protocolo no válidos" }
+        }
+      }
+    },
+    "/api/a2a": {
+      "post": {
+        "summary": "Envía una consulta al agente A2A del portafolio",
+        "description": "Implementa SendMessage sobre el binding JSON-RPC de A2A 1.0 y devuelve un Message de solo lectura.",
+        "operationId": "sendPortfolioA2aMessage",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/JsonRpcRequest" } } }
+        },
+        "responses": {
+          "200": { "description": "Respuesta o error JSON-RPC A2A", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } },
+          "400": { "description": "JSON, petición o versión de protocolo no válidos" }
+        }
+      }
     }
   },
   "components": {
@@ -50,6 +81,17 @@
           "version": { "type": "string" },
           "lastUpdate": { "type": "string", "format": "date-time" }
         }
+      },
+      "JsonRpcRequest": {
+        "type": "object",
+        "required": ["jsonrpc", "method"],
+        "properties": {
+          "jsonrpc": { "const": "2.0" },
+          "id": { "oneOf": [{ "type": "string" }, { "type": "integer" }, { "type": "null" }] },
+          "method": { "type": "string" },
+          "params": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": false
       },
       "Error": {
         "type": "object",

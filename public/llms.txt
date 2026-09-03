@@ -13,6 +13,8 @@
 - [API Catalog](https://andreslopez.co/.well-known/api-catalog): descubrimiento RFC 9727.
 - [Agent Skills](https://andreslopez.co/.well-known/agent-skills/index.json): habilidades publicadas.
 - [ARD](https://andreslopez.co/.well-known/ai-catalog.json): catálogo de recursos agent-ready.
+- [MCP Server Card](https://andreslopez.co/.well-known/mcp.json): conexión al servidor MCP público de solo lectura.
+- [A2A Agent Card](https://andreslopez.co/.well-known/agent-card.json): interfaz A2A 1.0 pública de solo lectura.
 
 ## Opcional
 

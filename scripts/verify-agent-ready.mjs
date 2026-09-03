@@ -19,6 +19,10 @@ const requiredFiles = [
   "public/.well-known/ai-catalog.json",
   "public/.well-known/agent-skills/index.json",
   "public/.well-known/agent-skills/portfolio-discovery/SKILL.md",
+  "public/.well-known/mcp.json",
+  "public/.well-known/agent-card.json",
+  "api/mcp.js",
+  "api/a2a.js",
   "vercel.json",
 ];
 for (const path of requiredFiles) assert.ok(existsSync(resolve(root, path)), `Falta ${path}`);
@@ -44,8 +48,9 @@ assert.equal((sitemap.match(/<url>/g) ?? []).length, (sitemap.match(/<\/url>/g) 
 
 const openapi = json("public/openapi.json");
 assert.match(openapi.openapi, /^3\.1\./);
-assert.deepEqual(Object.keys(openapi.paths).sort(), ["/api/version", "/api/youtube"]);
-for (const path of Object.values(openapi.paths)) assert.ok(path.get, "Solo se catalogan operaciones GET reales");
+assert.deepEqual(Object.keys(openapi.paths).sort(), ["/api/a2a", "/api/mcp", "/api/version", "/api/youtube"]);
+assert.ok(openapi.paths["/api/version"].get && openapi.paths["/api/youtube"].get);
+assert.ok(openapi.paths["/api/mcp"].post && openapi.paths["/api/a2a"].post);
 
 const apiCatalog = json("public/.well-known/api-catalog");
 assert.ok(Array.isArray(apiCatalog.linkset) && apiCatalog.linkset.length > 0);
@@ -90,12 +95,28 @@ assert.doesNotMatch(read("src/layouts/Layout.astro"), /navigator\.modelContext/)
 assert.match(read("src/layouts/Layout.astro"), /document\.modelContext/);
 assert.match(read("src/layouts/Layout.astro"), /registerTool/);
 
+const mcpCard = json("public/.well-known/mcp.json");
+assert.ok(mcpCard.name && mcpCard.description && mcpCard.version);
+assert.match(mcpCard.$schema, /modelcontextprotocol\.io\/schemas\/v1\/server-card\.schema\.json$/);
+assert.deepEqual(mcpCard.remotes, [{ type: "streamable-http", url: "https://andreslopez.co/api/mcp", supportedProtocolVersions: ["2025-06-18"] }]);
+
+const a2aCard = json("public/.well-known/agent-card.json");
+for (const field of ["name", "description", "version", "capabilities", "supportedInterfaces", "defaultInputModes", "defaultOutputModes", "skills"]) {
+  assert.ok(field in a2aCard, `Falta campo A2A 1.0: ${field}`);
+}
+assert.ok(a2aCard.skills.length > 0 && a2aCard.skills.every((skill) => skill.id && skill.name && skill.description && skill.tags?.length));
+assert.deepEqual(a2aCard.supportedInterfaces, [{ url: "https://andreslopez.co/api/a2a", protocolBinding: "JSONRPC", protocolVersion: "1.0" }]);
+assert.equal(a2aCard.capabilities.streaming, false);
+assert.equal(a2aCard.capabilities.pushNotifications, false);
+
 const vercel = json("vercel.json");
 const markdownRewrite = vercel.rewrites?.find((route) => route.source === "/" && route.destination === "/index.md");
 assert.ok(markdownRewrite?.has?.some((condition) => condition.type === "header" && condition.key === "accept" && condition.value.includes("text/markdown")));
 const homepageHeaders = vercel.headers?.find((route) => route.source === "/")?.headers ?? [];
 assert.ok(homepageHeaders.some((header) => header.key.toLowerCase() === "link" && header.value.includes('rel="api-catalog"')));
 assert.ok(homepageHeaders.some((header) => header.key.toLowerCase() === "link" && header.value.includes('rel="agent-skills"')));
+assert.ok(homepageHeaders.some((header) => header.key.toLowerCase() === "link" && header.value.includes("/.well-known/mcp.json")));
+assert.ok(homepageHeaders.some((header) => header.key.toLowerCase() === "link" && header.value.includes("/.well-known/agent-card.json")));
 const conditionalMarkdownHeaders = vercel.headers?.find((route) => route.source === "/" && route.has?.some((condition) => condition.type === "header" && condition.key === "accept" && condition.value.includes("text/markdown")))?.headers ?? [];
 assert.ok(conditionalMarkdownHeaders.some((header) => header.key.toLowerCase() === "content-type" && header.value.startsWith("text/markdown")));
 const apiCatalogHeaders = vercel.headers?.find((route) => route.source === "/.well-known/api-catalog")?.headers ?? [];
@@ -107,8 +128,6 @@ const apiHeaders = vercel.headers?.find((route) => route.source === "/api/(.*)")
 assert.ok(apiHeaders.some((header) => header.key.toLowerCase() === "content-type" && header.value.startsWith("application/json")));
 
 for (const forbidden of [
-  "public/.well-known/mcp/server-card.json",
-  "public/.well-known/agent-card.json",
   "public/.well-known/oauth-authorization-server",
   "public/.well-known/openid-configuration",
   "public/.well-known/oauth-protected-resource",

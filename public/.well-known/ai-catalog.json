@@ -34,6 +34,26 @@
         "Encuentra información pública sobre Andrés López",
         "Descubre las interfaces machine-readable del portafolio"
       ]
+    },
+    {
+      "identifier": "urn:air:andreslopez.co:protocol:mcp",
+      "displayName": "Servidor MCP del portafolio",
+      "type": "application/json",
+      "url": "https://andreslopez.co/.well-known/mcp.json",
+      "representativeQueries": [
+        "Consulta información del portafolio mediante MCP",
+        "Lista los recursos públicos mediante una herramienta MCP"
+      ]
+    },
+    {
+      "identifier": "urn:air:andreslopez.co:protocol:a2a",
+      "displayName": "Agente A2A del portafolio",
+      "type": "application/a2a+json",
+      "url": "https://andreslopez.co/.well-known/agent-card.json",
+      "representativeQueries": [
+        "Pregunta al agente A2A sobre Andrés López",
+        "Solicita al agente A2A los recursos del portafolio"
+      ]
     }
   ]
 }

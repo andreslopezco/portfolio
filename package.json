@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "check": "astro check",
+    "test": "node --test tests/*.test.js",
     "verify:agent-ready": "node scripts/verify-agent-ready.mjs",
     "preview": "astro preview",
     "astro": "astro"

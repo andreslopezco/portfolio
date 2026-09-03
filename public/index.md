@@ -15,5 +15,7 @@ Desarrollador y creador de contenido en español sobre tecnología, servidores, 
 - [Catálogo de API](https://andreslopez.co/.well-known/api-catalog)
 - [Catálogo ARD](https://andreslopez.co/.well-known/ai-catalog.json)
 - [Agent Skills](https://andreslopez.co/.well-known/agent-skills/index.json)
+- [Servidor MCP](https://andreslopez.co/.well-known/mcp.json)
+- [Agente A2A](https://andreslopez.co/.well-known/agent-card.json)
 
-El contenido público puede consultarse sin autenticación. No existe un servicio OAuth, MCP ni A2A en este dominio.
+El contenido y las interfaces MCP/A2A públicas pueden consultarse sin autenticación. No existe un servicio OAuth en este dominio.
