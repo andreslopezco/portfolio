@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import a2aHandler from "./api/a2a.js";
 import mcpHandler from "./api/mcp.js";
 
+const MODULE_DIR = fileURLToPath(new URL(".", import.meta.url));
 const DEFAULT_PORT = 3000;
 const MAX_BODY_BYTES = 1024 * 1024;
 const DISCOVERY_LINKS = [
@@ -131,7 +132,7 @@ function serveStatic(request, response, staticRoot, pathname) {
   }).pipe(response);
 }
 
-export function createPortfolioServer({ staticRoot = resolve(import.meta.dirname, "dist") } = {}) {
+export function createPortfolioServer({ staticRoot = resolve(MODULE_DIR, "dist") } = {}) {
   const root = realpathSync(resolve(staticRoot));
   return createServer(async (request, response) => {
     try {
