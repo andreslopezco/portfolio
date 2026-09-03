@@ -1,0 +1,28 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://andreslopez.co/api/version",
+      "service-desc": [{ "href": "https://andreslopez.co/openapi.json", "type": "application/vnd.oai.openapi+json;version=3.1" }],
+      "service-doc": [{ "href": "https://andreslopez.co/api-docs.md", "type": "text/markdown" }],
+      "agent-skills": [{ "href": "https://andreslopez.co/.well-known/agent-skills/index.json", "type": "application/json" }]
+    },
+    {
+      "anchor": "https://andreslopez.co/api/youtube",
+      "service-desc": [{ "href": "https://andreslopez.co/openapi.json", "type": "application/vnd.oai.openapi+json;version=3.1" }],
+      "service-doc": [{ "href": "https://andreslopez.co/api-docs.md", "type": "text/markdown" }],
+      "agent-skills": [{ "href": "https://andreslopez.co/.well-known/agent-skills/index.json", "type": "application/json" }]
+    },
+    {
+      "anchor": "https://andreslopez.co/api/mcp",
+      "service-desc": [{ "href": "https://andreslopez.co/openapi.json", "type": "application/vnd.oai.openapi+json;version=3.1" }],
+      "service-doc": [{ "href": "https://andreslopez.co/api-docs.md", "type": "text/markdown" }],
+      "agent-skills": [{ "href": "https://andreslopez.co/.well-known/agent-skills/index.json", "type": "application/json" }]
+    },
+    {
+      "anchor": "https://andreslopez.co/api/a2a",
+      "service-desc": [{ "href": "https://andreslopez.co/openapi.json", "type": "application/vnd.oai.openapi+json;version=3.1" }],
+      "service-doc": [{ "href": "https://andreslopez.co/api-docs.md", "type": "text/markdown" }],
+      "agent-skills": [{ "href": "https://andreslopez.co/.well-known/agent-skills/index.json", "type": "application/json" }]
+    }
+  ]
+}

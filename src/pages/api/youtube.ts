@@ -13,6 +13,17 @@ export async function GET() {
     const apiKey = import.meta.env.YOUTUBE_API_KEY;
     const channelId = import.meta.env.YOUTUBE_CHANNEL_ID;
 
+    if (!apiKey || !channelId) {
+      const fallback = getYoutubeCache(true);
+      return new Response(
+        JSON.stringify(fallback ?? { error: "YouTube data unavailable" }),
+        {
+          status: fallback ? 200 : 503,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+
     const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10`;
 
     const res = await fetch(url);

@@ -1,0 +1,30 @@
+{
+  "name": "Agente del portafolio de Andrés López",
+  "description": "Responde preguntas de solo lectura sobre Andrés López, los temas de su portafolio y sus recursos públicos.",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "extendedAgentCard": false
+  },
+  "supportedInterfaces": [
+    {
+      "url": "https://andreslopez.co/api/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "skills": [
+    {
+      "id": "portfolio-information",
+      "name": "Consultar el portafolio",
+      "description": "Responde preguntas sobre Andrés López, sus temas y los recursos machine-readable del sitio.",
+      "tags": ["portfolio", "technology", "public-resources"],
+      "examples": ["¿Sobre qué temas crea contenido Andrés?", "Lista los recursos públicos del portafolio"],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"]
+    }
+  ]
+}

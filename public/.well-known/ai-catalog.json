@@ -1,0 +1,59 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Portafolio de Andrés López",
+    "identifier": "did:web:andreslopez.co"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:andreslopez.co:api:portfolio",
+      "displayName": "API pública del portafolio",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://andreslopez.co/openapi.json",
+      "representativeQueries": [
+        "¿Cuál es la versión actual del portafolio?",
+        "Obtén los videos recientes de Andrés López"
+      ]
+    },
+    {
+      "identifier": "urn:air:andreslopez.co:content:portfolio-context",
+      "displayName": "Contexto completo del portafolio",
+      "type": "text/plain",
+      "url": "https://andreslopez.co/llms-full.txt",
+      "representativeQueries": [
+        "¿Quién es Andrés López y sobre qué crea contenido?",
+        "¿Qué recursos públicos ofrece andreslopez.co?"
+      ]
+    },
+    {
+      "identifier": "urn:air:andreslopez.co:skill:portfolio-discovery",
+      "displayName": "Descubrimiento del portafolio",
+      "type": "text/markdown",
+      "url": "https://andreslopez.co/.well-known/agent-skills/portfolio-discovery/SKILL.md",
+      "representativeQueries": [
+        "Encuentra información pública sobre Andrés López",
+        "Descubre las interfaces machine-readable del portafolio"
+      ]
+    },
+    {
+      "identifier": "urn:air:andreslopez.co:protocol:mcp",
+      "displayName": "Servidor MCP del portafolio",
+      "type": "application/json",
+      "url": "https://andreslopez.co/.well-known/mcp.json",
+      "representativeQueries": [
+        "Consulta información del portafolio mediante MCP",
+        "Lista los recursos públicos mediante una herramienta MCP"
+      ]
+    },
+    {
+      "identifier": "urn:air:andreslopez.co:protocol:a2a",
+      "displayName": "Agente A2A del portafolio",
+      "type": "application/a2a+json",
+      "url": "https://andreslopez.co/.well-known/agent-card.json",
+      "representativeQueries": [
+        "Pregunta al agente A2A sobre Andrés López",
+        "Solicita al agente A2A los recursos del portafolio"
+      ]
+    }
+  ]
+}

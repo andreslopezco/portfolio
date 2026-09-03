@@ -1,0 +1,21 @@
+# Andrés López
+
+> Portafolio en español de Andrés López sobre tecnología, servidores, homelabs, automatización con IA y soluciones digitales.
+
+## Sitio
+
+- [Página principal](https://andreslopez.co/index.md): versión Markdown del portafolio.
+- [Contexto ampliado](https://andreslopez.co/llms-full.txt): descripción detallada y recursos públicos.
+
+## Recursos de máquina
+
+- [OpenAPI](https://andreslopez.co/openapi.json): contrato de los endpoints públicos del portafolio.
+- [API Catalog](https://andreslopez.co/.well-known/api-catalog): descubrimiento RFC 9727.
+- [Agent Skills](https://andreslopez.co/.well-known/agent-skills/index.json): habilidades publicadas.
+- [ARD](https://andreslopez.co/.well-known/ai-catalog.json): catálogo de recursos agent-ready.
+- [MCP Server Card](https://andreslopez.co/.well-known/mcp.json): conexión al servidor MCP público de solo lectura.
+- [A2A Agent Card](https://andreslopez.co/.well-known/agent-card.json): interfaz A2A 1.0 pública de solo lectura.
+
+## Opcional
+
+- [YouTube](https://www.youtube.com/@andreslopezco/videos): contenido audiovisual externo.

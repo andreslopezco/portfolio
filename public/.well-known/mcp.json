@@ -1,0 +1,15 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
+  "name": "co.andreslopez/portfolio",
+  "title": "Portafolio de Andrés López",
+  "description": "Servidor MCP público y de solo lectura para consultar información y recursos del portafolio.",
+  "version": "1.0.0",
+  "websiteUrl": "https://andreslopez.co",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://andreslopez.co/api/mcp",
+      "supportedProtocolVersions": ["2025-06-18"]
+    }
+  ]
+}

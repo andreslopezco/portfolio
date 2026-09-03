@@ -1,0 +1,25 @@
+# Andrés López — contexto completo para agentes
+
+Andrés López crea contenido en español y desarrolla soluciones alrededor de tecnología, servidores, homelabs, automatización, inteligencia artificial, APIs, nube, Proxmox, n8n, WordPress y Elementor. Su formación e intereses también incluyen Negocios Internacionales y Economía, con énfasis en soluciones sostenibles y útiles para Latinoamérica.
+
+## Navegación
+
+La página principal tiene tres secciones: presentación (`#home`), últimos videos (`#videos`) e información sobre Andrés (`#about`). La lista de videos se obtiene del canal público de YouTube y puede depender de la disponibilidad de ese servicio externo.
+
+## Interfaces públicas
+
+`GET /api/version` devuelve una instantánea generada durante el build con la versión pública del repositorio y su última actualización consultadas en GitHub. `GET /api/youtube` devuelve una instantánea generada durante el build a partir de la caché de videos recientes o de YouTube cuando el entorno de compilación cuenta con las variables requeridas. Ambas interfaces son de solo lectura y no requieren autenticación.
+
+## Interfaces de agentes
+
+`POST /api/mcp` es un servidor MCP Streamable HTTP stateless, público y de solo lectura. Soporta MCP `2025-06-18`, descubrimiento y llamada de las herramientas `get_portfolio_info` y `list_public_resources`. Su card está en `/.well-known/mcp.json`.
+
+`POST /api/a2a` implementa `SendMessage` mediante el binding JSON-RPC de A2A 1.0. Responde preguntas sobre el portafolio con mensajes de texto y no mantiene tareas ni contexto en servidor. Su Agent Card está en `/.well-known/agent-card.json`.
+
+## Límites de capacidad
+
+Este sitio no ofrece autenticación, registro, OAuth, operaciones comerciales, pagos ni acciones que modifiquen datos. MCP no ofrece SSE ni sesiones, y A2A no ofrece streaming, tareas persistentes ni push notifications.
+
+## Uso del contenido
+
+El archivo robots.txt permite indexación (`search=yes`), pero expresa `ai-input=no` y `ai-train=no`. Los endpoints bajo `/api/` están excluidos del rastreo general; se descubren de forma explícita mediante OpenAPI y API Catalog.

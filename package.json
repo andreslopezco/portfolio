@@ -6,6 +6,9 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "check": "astro check",
+    "test": "node --test tests/*.test.js",
+    "verify:agent-ready": "node scripts/verify-agent-ready.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -35,6 +38,7 @@
     "tw-animate-css": "^1.2.5"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@types/node": "^22.14.0",
     "dotenv": "^16.4.7",
     "shadcn-ui": "^0.9.5"
