@@ -30,7 +30,7 @@ const { title = "Andrés López | Tecnología, Servidores, Automatización y má
 
     <script is:inline>
       (() => {
-        const modelContext = document.modelContext;
+        const modelContext = navigator.modelContext ?? document.modelContext;
         if (!modelContext || typeof modelContext.registerTool !== "function") return;
 
         const controller = new AbortController();

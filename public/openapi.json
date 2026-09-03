@@ -3,7 +3,7 @@
   "info": {
     "title": "API pública del portafolio de Andrés López",
     "version": "2.0.2",
-    "description": "Interfaces públicas de solo lectura del portafolio. Incluye instantáneas estáticas y servidores MCP y A2A stateless en funciones Vercel. No requieren autenticación."
+    "description": "Interfaces públicas de solo lectura del portafolio. Incluye instantáneas estáticas y servidores MCP y A2A stateless ejecutados por el servidor Node del contenedor de producción. No requieren autenticación."
   },
   "servers": [{ "url": "https://andreslopez.co" }],
   "paths": {

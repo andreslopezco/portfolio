@@ -23,6 +23,8 @@ const requiredFiles = [
   "public/.well-known/agent-card.json",
   "api/mcp.js",
   "api/a2a.js",
+  "server.mjs",
+  "nixpacks.toml",
   "vercel.json",
 ];
 for (const path of requiredFiles) assert.ok(existsSync(resolve(root, path)), `Falta ${path}`);
@@ -91,9 +93,25 @@ for (const skill of skills.skills) {
 
 assert.match(read("public/auth.md"), /^# .*auth\.md/im);
 assert.match(read("public/auth.md"), /no (?:existe|se emiten).*OAuth|no opera un authorization server/i);
-assert.doesNotMatch(read("src/layouts/Layout.astro"), /navigator\.modelContext/);
+assert.match(read("src/layouts/Layout.astro"), /navigator\.modelContext/);
 assert.match(read("src/layouts/Layout.astro"), /document\.modelContext/);
 assert.match(read("src/layouts/Layout.astro"), /registerTool/);
+
+const server = read("server.mjs");
+assert.match(server, /createPortfolioServer/);
+assert.match(server, /text\/markdown/);
+assert.match(server, /Vary/);
+assert.match(server, /api\/mcp/);
+assert.match(server, /api\/a2a/);
+assert.match(server, /healthz/);
+const nixpacks = read("nixpacks.toml");
+assert.match(nixpacks, /\[phases\.install\][\s\S]*cmds\s*=\s*\["npm ci"\]/);
+assert.match(nixpacks, /\[phases\.build\][\s\S]*cmds\s*=\s*\["npm run build"\]/);
+assert.match(nixpacks, /\[start\][\s\S]*cmd\s*=\s*"npm start"/);
+assert.equal(json("package.json").scripts?.start, "node server.mjs");
+for (const obsolete of ["Dockerfile", ".dockerignore"]) {
+  assert.ok(!existsSync(resolve(root, obsolete)), `No debe existir ${obsolete}: producción usa Nixpacks`);
+}
 
 const mcpCard = json("public/.well-known/mcp.json");
 assert.ok(mcpCard.name && mcpCard.description && mcpCard.version);
