@@ -34,7 +34,13 @@ npm run build
 npm start
 ```
 
-El servidor Node escucha en `PORT` (3000 por defecto), sirve los archivos estáticos de `dist`, expone MCP/A2A y ofrece el healthcheck `/healthz`. Producción usa el `Dockerfile`: en Dokploy se debe elegir **Dockerfile** como Build Type y configurar el puerto interno `3000`.
+El servidor Node escucha en `PORT` (3000 por defecto), sirve los archivos estáticos de `dist`, expone MCP/A2A y ofrece el healthcheck `/healthz`.
+
+Producción usa **Nixpacks** en Dokploy. `nixpacks.toml` fija una instalación reproducible con `npm ci`, ejecuta `npm run build` y arranca con `npm start`. En la configuración de Dokploy:
+
+- Mantén **Build Type = Nixpacks**.
+- Borra el valor de **Publish Directory** y déjalo vacío; `./dist` hace que Dokploy cree la capa de servicio estático que su UI describe como **NGINX**, omitiendo `server.mjs`, MCP/A2A y la negociación Markdown. Esa capa no es el proxy principal de Dokploy.
+- Define `PORT=3000` y configura el dominio en Traefik, el proxy/ingress de Dokploy, para enrutar al puerto interno `3000`.
 
 ## Contribuciones
 
