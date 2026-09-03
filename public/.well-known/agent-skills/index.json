@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "portfolio-discovery",
+      "type": "skill-md",
+      "description": "Descubre y consulta de forma segura el contenido y los endpoints públicos de solo lectura del portafolio de Andrés López.",
+      "url": "https://andreslopez.co/.well-known/agent-skills/portfolio-discovery/SKILL.md",
+      "digest": "sha256:9281fbd2e23717b7e57621d2163a59b6a2aabb4b87ee89d3a347d61e70d23741"
+    }
+  ]
+}

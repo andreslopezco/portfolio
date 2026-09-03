@@ -1,0 +1,64 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API pública del portafolio de Andrés López",
+    "version": "2.0.2",
+    "description": "Instantáneas públicas de solo lectura generadas durante el build del portafolio. No requieren autenticación."
+  },
+  "servers": [{ "url": "https://andreslopez.co" }],
+  "paths": {
+    "/api/version": {
+      "get": {
+        "summary": "Obtiene la instantánea de versión generada durante el build",
+        "operationId": "getPortfolioVersion",
+        "responses": {
+          "200": {
+            "description": "Instantánea de versión, o un objeto de error generado durante el build si GitHub no estaba disponible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/Version" },
+                    { "$ref": "#/components/schemas/Error" }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/youtube": {
+      "get": {
+        "summary": "Obtiene la instantánea de videos generada durante el build",
+        "operationId": "getRecentYoutubeVideos",
+        "responses": {
+          "200": {
+            "description": "Instantánea estática de la respuesta de búsqueda de YouTube, o un objeto de error generado durante el build si no había datos disponibles",
+            "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Version": {
+        "type": "object",
+        "required": ["version", "lastUpdate"],
+        "properties": {
+          "version": { "type": "string" },
+          "lastUpdate": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

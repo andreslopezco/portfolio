@@ -13,6 +13,11 @@ const { title = "Andrés López | Tecnología, Servidores, Automatización y má
     <title>{title}</title>
     <meta name="description" content="Portafolio de Andrés López, desarrollador y creador de soluciones digitales." />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="alternate" type="text/markdown" href="/index.md" title="Versión Markdown" />
+    <link rel="api-catalog" href="/.well-known/api-catalog" />
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
+    <link rel="agent-skills" type="application/json" href="/.well-known/agent-skills/index.json" />
+    <link rel="describedby" type="text/plain" href="/llms.txt" />
   </head>
   <body class="min-h-screen antialiased">
     <Header />
@@ -22,5 +27,46 @@ const { title = "Andrés López | Tecnología, Servidores, Automatización y má
     </main>
 
     <Footer />
+
+    <script is:inline>
+      (() => {
+        const modelContext = document.modelContext;
+        if (!modelContext || typeof modelContext.registerTool !== "function") return;
+
+        const controller = new AbortController();
+        const sections = {
+          home: { hash: "#home", label: "presentación" },
+          videos: { hash: "#videos", label: "últimos videos" },
+          about: { hash: "#about", label: "información sobre Andrés" },
+        };
+
+        const registration = modelContext.registerTool({
+          name: "navigate_portfolio",
+          title: "Navegar por el portafolio",
+          description: "Navega a una sección pública del portafolio de Andrés López.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              section: { type: "string", enum: Object.keys(sections) },
+            },
+            required: ["section"],
+            additionalProperties: false,
+          },
+          execute: async ({ section }) => {
+            const target = sections[section];
+            if (!target) return { error: "Sección no válida" };
+            document.querySelector(target.hash)?.scrollIntoView({ behavior: "smooth" });
+            history.replaceState(null, "", target.hash);
+            return { success: true, section, label: target.label };
+          },
+        }, { signal: controller.signal });
+
+        Promise.resolve(registration).catch((error) => {
+          console.debug("WebMCP tool registration unavailable:", error);
+        });
+
+        window.addEventListener("pagehide", () => controller.abort(), { once: true });
+      })();
+    </script>
   </body>
 </html>
