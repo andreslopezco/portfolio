@@ -3,83 +3,135 @@
 import "@/styles/global.css";
 import Header from "@/components/global/Header.astro";
 import Footer from "@/components/global/Footer.astro";
-const { title = "Andrés López | Tecnología, Servidores, Automatización y más." } = Astro.props;
+
+const {
+  title = "Andrés López | Tecnología, Servidores, Automatización y más.",
+  description = "Andrés López — creador de contenido tech sobre homelabs, servidores, automatización con IA y desarrollo web. Tutoriales, guías y proyectos para Latinoamérica.",
+  canonical = Astro.url,
+  image = "/profile.webp",
+  type = "website",
+  keywords = "Andrés López, tecnología, servidores, homelab, automatización, IA, inteligencia artificial, desarrollo web, cloud computing, DevOps, Linux, SysAdmin, contenido tech, Latinoamérica",
+  breadcrumbs = [{ name: "Inicio", href: "/" }],
+} = Astro.props;
+
+const domain = "https://andreslopez.co";
+const ogImage = image.startsWith("http") ? image : `${domain}${image}`;
+const ogUrl = canonical;
+
+const personLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Andrés López",
+  url: domain,
+  image: `${domain}/profile.webp`,
+  sameAs: [
+    "https://www.youtube.com/@andreslopezco",
+    "https://www.instagram.com/andreslopez.co",
+    "https://github.com/andreslopezco",
+  ],
+  jobTitle: "Creador de contenido tecnológico",
+  description: "Creador de contenido sobre tecnología, servidores, homelabs y automatización con IA para Latinoamérica.",
+  knowsAbout: ["Servidores", "Homelab", "Automatización", "Inteligencia Artificial", "Cloud Computing", "DevOps"],
+});
+
+const websiteLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Andrés López",
+  url: domain,
+  description: "Tecnología, Servidores, Automatización e IA para Latinoamérica",
+  inLanguage: "es-CO",
+  author: {
+    "@type": "Person",
+    name: "Andrés López",
+  },
+});
+
+const breadcrumbLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((crumb, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: crumb.name,
+    item: crumb.href.startsWith("http") ? crumb.href : `${domain}${crumb.href}`,
+  })),
+});
 ---
+
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es-CO" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content="Portafolio de Andrés López, desarrollador y creador de soluciones digitales." />
+
+    <!-- Meta tags -->
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Andrés López" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={ogUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Andrés López" />
+    <meta property="og:locale" content="es_CO" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:creator" content="@andreslopezco" />
+    <meta name="twitter:site" content="@andreslopezco" />
+
+    <!-- JSON-LD: Person -->
+    <script type="application/ld+json" set:html={personLd}></script>
+
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json" set:html={websiteLd}></script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json" set:html={breadcrumbLd}></script>
+
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="alternate" type="text/markdown" href="/index.md" title="Versión Markdown" />
     <link rel="api-catalog" href="/.well-known/api-catalog" />
     <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
     <link rel="agent-skills" type="application/json" href="/.well-known/agent-skills/index.json" />
     <link rel="describedby" type="text/plain" href="/llms.txt" />
-
-    <!-- BreadcrumbList structured data (JSON-LD) -->
-    <script type="application/ld+json" id="breadcrumb-jsonld">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Inicio",
-            "item": "https://andreslopez.co/"
-          }
-        ]
-      }
-    </script>
-    <script is:inline>
-      (() => {
-        const sections = {
-          "videos": { name: "Videos", hash: "#videos" },
-          "about": { name: "Sobre mí", hash: "#about" },
-        };
-
-        function updateBreadcrumb(hash) {
-          const script = document.getElementById("breadcrumb-jsonld");
-          if (!script) return;
-
-          let items = [
-            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://andreslopez.co/" }
-          ];
-
-          const section = sections[hash.replace("#", "")];
-          if (section) {
-            items.push({
-              "@type": "ListItem",
-              "position": 2,
-              "name": section.name,
-              "item": "https://andreslopez.co/" + section.hash
-            });
-          }
-
-          script.textContent = JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": items
-          }, null, 2);
-        }
-
-        // Set initial breadcrumb based on current hash
-        updateBreadcrumb(window.location.hash);
-
-        // Listen for hash changes
-        window.addEventListener("hashchange", () => {
-          updateBreadcrumb(window.location.hash);
-        });
-      })();
-    </script>
   </head>
   <body class="min-h-screen antialiased">
     <Header />
 
-    <main class="flex flex-col gap-8 pt-[80px]">
+    <!-- Breadcrumb navigation -->
+    <nav aria-label="Breadcrumb" class="container mx-auto px-4 md:px-6 pt-20">
+      <ol class="flex items-center gap-2 text-sm text-muted-foreground">
+        {breadcrumbs.map((crumb, i) => (
+          <li class="flex items-center gap-2">
+            {i > 0 && (
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground/50" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            )}
+            {i < breadcrumbs.length - 1 ? (
+              <a href={crumb.href} class="hover:text-foreground transition-colors">{crumb.name}</a>
+            ) : (
+              <span class="text-foreground font-medium" aria-current="page">{crumb.name}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <main class="flex flex-col gap-8 pt-4">
         <slot />
     </main>
 
@@ -94,7 +146,10 @@ const { title = "Andrés López | Tecnología, Servidores, Automatización y má
         const sections = {
           home: { hash: "#home", label: "presentación" },
           videos: { hash: "#videos", label: "últimos videos" },
+          projects: { hash: "#projects", label: "proyectos reales" },
           about: { hash: "#about", label: "información sobre Andrés" },
+          services: { hash: "#services", label: "servicios y consultoría" },
+          contacto: { hash: "#contacto", label: "contacto" },
         };
 
         const registration = modelContext.registerTool({
