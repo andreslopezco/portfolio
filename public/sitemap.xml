@@ -18,5 +18,30 @@
       <image:caption>Foto de perfil de Andrés López - creador de contenido sobre tecnología, homelabs y automatización con IA</image:caption>
       <image:title>Andrés López - Foto de perfil</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://andreslopez.co/projects/homelab-dashboard.svg</image:loc>
+      <image:caption>Homelab Dashboard - Panel de monitoreo en tiempo real para infraestructura Proxmox</image:caption>
+      <image:title>Homelab Dashboard - Proyecto</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://andreslopez.co/projects/hermes-agent.svg</image:loc>
+      <image:caption>Hermes Agent - Asistente de IA autónomo para automatización de infraestructura</image:caption>
+      <image:title>Hermes Agent - Proyecto</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://andreslopez.co/projects/n8n-workflows.svg</image:loc>
+      <image:caption>n8n Enterprise - Automatización de flujos de trabajo empresariales con n8n</image:caption>
+      <image:title>n8n Enterprise - Proyecto</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://andreslopez.co/projects/cloud-migration.svg</image:loc>
+      <image:caption>Migración Cloud Híbrido - Migración de infraestructura on-premise a nube híbrida</image:caption>
+      <image:title>Migración Cloud Híbrido - Proyecto</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://andreslopez.co/favicon.png</image:loc>
+      <image:caption>Favicon de Andrés López</image:caption>
+      <image:title>Andrés López Favicon</image:title>
+    </image:image>
   </url>
 </urlset>
