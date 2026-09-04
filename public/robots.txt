@@ -49,4 +49,5 @@ Disallow: /api/
 Content-Signal: search=yes, ai-input=no, ai-train=no
 
 Sitemap: https://andreslopez.co/sitemap.xml
+Sitemap: https://andreslopez.co/image-sitemap.xml
 Agentmap: https://andreslopez.co/.well-known/ai-catalog.json
