@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://andreslopez.co/</loc>
+    <image:image>
+      <image:loc>https://andreslopez.co/logo.webp</image:loc>
+      <image:caption>Logo principal de Andrés López - Tecnología, Servidores, Automatización</image:caption>
+      <image:title>Andrés López Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://andreslopez.co/logo-light.webp</image:loc>
+      <image:caption>Logo variante clara de Andrés López</image:caption>
+      <image:title>Andrés López Logo (Light variant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://andreslopez.co/profile.webp</image:loc>
+      <image:caption>Foto de perfil de Andrés López - creador de contenido sobre tecnología, homelabs y automatización con IA</image:caption>
+      <image:title>Andrés López - Foto de perfil</image:title>
+    </image:image>
   </url>
 </urlset>
