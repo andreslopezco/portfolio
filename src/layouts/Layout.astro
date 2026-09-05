@@ -11,7 +11,6 @@ const {
   image = "/profile.webp",
   type = "website",
   keywords = "Andrés López, tecnología, servidores, homelab, automatización, IA, inteligencia artificial, desarrollo web, cloud computing, DevOps, Linux, SysAdmin, contenido tech, Latinoamérica",
-  breadcrumbs = [{ name: "Inicio", href: "/" }],
 } = Astro.props;
 
 const domain = "https://andreslopez.co";
@@ -47,16 +46,7 @@ const websiteLd = JSON.stringify({
   },
 });
 
-const breadcrumbLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: breadcrumbs.map((crumb, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: crumb.name,
-    item: crumb.href.startsWith("http") ? crumb.href : `${domain}${crumb.href}`,
-  })),
-});
+
 ---
 
 <!DOCTYPE html>
@@ -98,9 +88,6 @@ const breadcrumbLd = JSON.stringify({
     <!-- JSON-LD: WebSite -->
     <script type="application/ld+json" set:html={websiteLd}></script>
 
-    <!-- JSON-LD: BreadcrumbList -->
-    <script type="application/ld+json" set:html={breadcrumbLd}></script>
-
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="alternate" type="text/markdown" href="/index.md" title="Versión Markdown" />
     <link rel="api-catalog" href="/.well-known/api-catalog" />
@@ -110,26 +97,6 @@ const breadcrumbLd = JSON.stringify({
   </head>
   <body class="min-h-screen antialiased">
     <Header />
-
-    <!-- Breadcrumb navigation -->
-    <nav aria-label="Breadcrumb" class="container mx-auto px-4 md:px-6 pt-20">
-      <ol class="flex items-center gap-2 text-sm text-muted-foreground">
-        {breadcrumbs.map((crumb, i) => (
-          <li class="flex items-center gap-2">
-            {i > 0 && (
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground/50" aria-hidden="true">
-                <path d="m9 18 6-6-6-6"/>
-              </svg>
-            )}
-            {i < breadcrumbs.length - 1 ? (
-              <a href={crumb.href} class="hover:text-foreground transition-colors">{crumb.name}</a>
-            ) : (
-              <span class="text-foreground font-medium" aria-current="page">{crumb.name}</span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
 
     <main class="flex flex-col gap-8 pt-4">
         <slot />
