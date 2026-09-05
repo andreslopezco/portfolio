@@ -19,8 +19,17 @@ const MobileMenuComponent = () => {
           <a href="#videos" className={cn("text-base font-medium")}>
             Videos
           </a>
+          <a href="#servicios" className={cn("text-base font-medium")}>
+            Servicios
+          </a>
+          <a href="#projects" className={cn("text-base font-medium")}>
+            Proyectos
+          </a>
           <a href="#about" className={cn("text-base font-medium")}>
             Sobre mí
+          </a>
+          <a href="#contacto" className={cn("text-base font-medium")}>
+            Contacto
           </a>
         </nav>
       </SheetContent>
