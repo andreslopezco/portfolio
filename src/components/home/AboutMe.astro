@@ -1,7 +1,6 @@
 ---
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
 import FadeIn from "@/components/react/FadeIn";
 
 const skills = [
@@ -92,19 +91,4 @@ const skills = [
       </FadeIn>
       </div>
     </div>
-  </div>
-
-  <!-- Section CTA -->
-  <FadeIn client:idle delay={0.7}>
-    <div class="text-center mt-8 pt-6 border-t border-border">
-      <p class="text-muted-foreground mb-4">¿Tienes un proyecto o idea? Hablemos.</p>
-      <a
-        href="#contacto"
-        class="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
-      >
-        Trabajemos juntos
-        <ArrowRight class="w-4 h-4" />
-      </a>
-    </div>
-  </FadeIn>
 </div>

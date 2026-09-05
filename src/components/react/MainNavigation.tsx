@@ -29,33 +29,9 @@ const NavigationMenuComponent = () => {
         <NavigationMenuItem>
           <NavigationMenuLink
             className={navigationMenuTriggerStyle()}
-            href="#servicios"
-          >
-            Servicios
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            href="#projects"
-          >
-            Proyectos
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
             href="#about"
           >
             Sobre mí
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            href="#contacto"
-          >
-            Contacto
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>

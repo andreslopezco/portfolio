@@ -7,7 +7,7 @@ const MobileMenuComponent = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación">
+        <Button variant="ghost" size="icon">
           <Menu className="h-5 w-5" />
         </Button>
       </SheetTrigger>
@@ -19,17 +19,8 @@ const MobileMenuComponent = () => {
           <a href="#videos" className={cn("text-base font-medium")}>
             Videos
           </a>
-          <a href="#servicios" className={cn("text-base font-medium")}>
-            Servicios
-          </a>
-          <a href="#projects" className={cn("text-base font-medium")}>
-            Proyectos
-          </a>
           <a href="#about" className={cn("text-base font-medium")}>
             Sobre mí
-          </a>
-          <a href="#contacto" className={cn("text-base font-medium")}>
-            Contacto
           </a>
         </nav>
       </SheetContent>
