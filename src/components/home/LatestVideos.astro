@@ -1,11 +1,36 @@
 ---
 import FadeIn from "@/components/react/FadeIn"
 import YoutubeCarousel from "@/components/react/YoutubeCarousel"
+import { ArrowRight } from "lucide-react"
 ---
 
 <div class="w-full" aria-label="Carrusel de videos de YouTube">
-    <FadeIn client:load>
-        <h2 class="text-3xl font-bold mb-6">Últimos videos</h2>
-    <YoutubeCarousel client:load />
+    <FadeIn client:idle>
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-3xl font-bold">Últimos videos</h2>
+            <a
+                href="https://www.youtube.com/@andreslopezco/videos"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors group"
+                aria-label="Ver todos los videos en YouTube"
+            >
+                Ver todos
+                <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+        </div>
+        <YoutubeCarousel client:idle />
+        <div class="text-center mt-6 sm:hidden">
+            <a
+                href="https://www.youtube.com/@andreslopezco/videos"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5"
+                aria-label="Ver todos los videos en YouTube"
+            >
+                Ver todos los videos
+                <ArrowRight class="w-4 h-4" />
+            </a>
+        </div>
     </FadeIn>
 </div>

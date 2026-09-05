@@ -13,24 +13,30 @@ import MobileMenu from "@/components/react/MobileMenu";
     <a href="/" class="flex items-center gap-2">
       <img
         src="/logo.webp"
-        alt="Logo"
+        alt="Logo de Andrés López — Tecnología, Servidores y Automatización"
+        width="500"
+        height="178"
+        decoding="async"
         class="h-14 w-auto dark:block hidden"
       />
       <img
         src="/logo-light.webp"
-        alt="Logo"
+        alt="Logo de Andrés López — Tecnología, Servidores y Automatización"
+        width="500"
+        height="178"
+        decoding="async"
         class="h-14 w-auto dark:hidden block"
       />
     </a>
 
     <!-- Menú desktop -->
     <div class="hidden md:flex items-center gap-6">
-      <MainNavigation client:load />
+      <MainNavigation client:idle />
     </div>
 
     <!-- Mobile menu -->
     <div class="md:hidden flex items-center gap-2">
-      <MobileMenu client:load />
+      <MobileMenu client:idle />
     </div>
   </div>
 </header>
