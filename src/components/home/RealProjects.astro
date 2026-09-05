@@ -1,0 +1,153 @@
+---
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import FadeIn from "@/components/react/FadeIn";
+import { ArrowRight } from "lucide-react";
+
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+  link: string;
+  linkLabel: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "Homelab Dashboard",
+    description:
+      "Panel de monitoreo en tiempo real para infraestructura Proxmox. Métricas de CPU, RAM, disco y red con alertas configurables vía Telegram. Automatización de backups y snapshots con retención programada.",
+    tags: ["Proxmox", "Node.js", "WebSockets", "Docker", "Telegraf"],
+    image: "/projects/homelab-dashboard.svg",
+    link: "https://github.com/andreslopezco/homelab-dashboard",
+    linkLabel: "Ver en GitHub",
+  },
+  {
+    title: "Hermes Agent",
+    description:
+      "Agente de IA autónomo para automatización de tareas en servidores. Ejecuta workflows complejos, orquesta herramientas y responde por Telegram. Integración con APIs externas y ejecución de código en contenedores aislados.",
+    tags: ["Python", "IA", "APIs", "Docker", "Telegram Bot"],
+    image: "/projects/hermes-agent.svg",
+    link: "https://github.com/andreslopezco/hermes-agent",
+    linkLabel: "Ver en GitHub",
+  },
+  {
+    title: "Flujos n8n Enterprise",
+    description:
+      "Automatización de procesos empresariales con n8n: sincronización CRM-email marketing, facturación recurrente, informes automáticos y orquestación multi-plataforma. Escalable con manejo de errores robusto.",
+    tags: ["n8n", "REST APIs", "PostgreSQL", "Redis", "Docker"],
+    image: "/projects/n8n-workflows.svg",
+    link: "https://github.com/andreslopezco/n8n-workflows",
+    linkLabel: "Ver en GitHub",
+  },
+  {
+    title: "Migración Cloud Híbrido",
+    description:
+      "Migración completa de infraestructura on-premise a cloud híbrido con Proxmox VE. Automatización de deploys con Ansible, balanceo de cargas y alta disponibilidad con failover automático entre nodos.",
+    tags: ["Proxmox", "Ansible", "Cloud", "HA", "Linux"],
+    image: "/projects/cloud-migration.svg",
+    link: "https://andreslopez.co/blog/migracion-cloud-hibrido",
+    linkLabel: "Leer caso de estudio",
+  },
+];
+---
+
+<section
+  id="projects"
+  class="py-16"
+  aria-label="Proyectos reales"
+>
+  <FadeIn client:idle>
+    <div class="space-y-4 mb-12">
+      <h2 class="text-3xl font-bold tracking-tight">Proyectos reales</h2>
+      <p class="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+        Cada proyecto nace de un problema real y se resuelve con tecnolog&iacute;a pr&aacute;ctica.
+        As&iacute; trabajo, as&iacute; construyo.
+      </p>
+    </div>
+  </FadeIn>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+    {projects.map((project, index) => (
+      <FadeIn client:idle delay={index * 0.1}>
+        <Card
+          client:idle
+          class="bg-card/50 backdrop-blur h-full flex flex-col overflow-hidden group hover:border-primary/30 transition-colors duration-300"
+        >
+          <!-- Project Image -->
+          <div class="relative aspect-video overflow-hidden bg-muted">
+            <img
+              src={project.image}
+              alt={`Captura de ${project.title}`}
+              width="800"
+              height="450"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
+          </div>
+
+          <CardContent client:idle class="flex-1 flex flex-col pt-6 gap-3">
+            <h3 class="text-xl font-semibold leading-tight">{project.title}</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed flex-1">
+              {project.description}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 mt-2">
+              {project.tags.map((tag) => (
+                <Badge
+                  client:idle
+                  key={tag}
+                  variant="secondary"
+                  class="text-xs font-normal"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+
+            <!-- Link -->
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-3 w-fit"
+              aria-label={`${project.linkLabel}: ${project.title}`}
+            >
+              {project.linkLabel}
+              <svg
+                class="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                />
+              </svg>
+            </a>
+          </CardContent>
+        </Card>
+      </FadeIn>
+    ))}
+  </div>
+  <!-- Section CTA -->
+  <FadeIn client:idle delay={0.3}>
+    <div class="text-center mt-12 pt-6 border-t border-border">
+      <p class="text-muted-foreground mb-4">¿Tienes un proyecto similar en mente?</p>
+      <a
+        href="#contacto"
+        class="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
+      >
+        Contáctame
+        <ArrowRight class="w-4 h-4" />
+      </a>
+    </div>
+  </FadeIn>
+</section>

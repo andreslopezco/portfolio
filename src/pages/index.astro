@@ -3,22 +3,37 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/home/Hero.astro";
 import LatestVideos from "@/components/home/LatestVideos.astro";
 import AboutMe from "@/components/home/AboutMe.astro";
+import RealProjects from "@/components/home/RealProjects.astro";
+import Services from "@/components/home/Services.astro";
+import Contact from "@/components/home/Contact.astro";
 ---
 
 <Layout title="Tecnología, Servidores, Automatización y más.">
-  {/* Hero section - full width */}
+  <!-- Hero section - full width -->
   <Hero />
 
-  {/* Content sections - constrained width */}
+  <!-- Content sections - constrained width -->
   <div class="flex flex-col gap-16">
     <div class="container mx-auto max-w-5xl px-4 md:px-6">
       <section id="videos" class="pt-8 pb-4" aria-label="Últimos videos">
         <LatestVideos />
       </section>
 
+      <section id="services" class="mt-16" aria-label="Servicios y consultoría">
+        <Services />
+      </section>
+
+      <section id="projects" class="mt-16" aria-label="Proyectos reales realizados">
+        <RealProjects />
+      </section>
+
       <section id="about" class="mt-16" aria-label="Información sobre mí">
         <AboutMe />
       </section>
+
+      <section id="contacto" class="mt-16 mb-8" aria-label="Contacto">
+        <Contact />
+      </section>
     </div>
-  </div> 
+  </div>
 </Layout>
