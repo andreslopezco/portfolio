@@ -105,7 +105,6 @@ Sitemaps: `sitemap-index.xml` (1 URL), `image-sitemap.xml` (8 imágenes)
 
 - **Person** ✅ — Con sameAs, jobTitle, knowsAbout correctos.
 - **WebSite** ✅ — Con inLanguage: "es-CO", author vinculado.
-- **BreadcrumbList** ✅ — Para página de inicio: correcto.
 - **Schema.org inline (Services)** ✅ — itemscope, itemprop en títulos/descripciones.
 
 Todo excelente. Sin cambios necesarios.
@@ -169,10 +168,9 @@ Todo excelente. Sin cambios necesarios.
 ### 5.5 Semantic HTML
 
 - ✅ `<main>` envuelve el contenido principal
-- ✅ `<nav>` con `aria-label="Breadcrumb"` para breadcrumb y `aria-label="Main"` para navegación principal
+- ✅ `<nav>` con `aria-label="Main"` para navegación principal
 - ✅ `<section>` con `aria-label` descriptivo en cada sección
 - ✅ `<header>` y `<footer>` semánticos
-- ✅ Uso de `aria-current="page"` en breadcrumb
 
 ---
 
