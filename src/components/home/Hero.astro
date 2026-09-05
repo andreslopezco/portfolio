@@ -38,20 +38,20 @@ import FadeIn from "@/components/react/FadeIn";
   aria-label="Presentación principal"
 >
   <div class="absolute inset-0 w-full h-full">
-    <ParticlesComponent client:load />
+    <ParticlesComponent client:idle />
   </div>
-  <div class="container mx-auto px-4 relative z-10 h-full flex items-center justify-center">
+  <div class="container mx-auto px-4 relative z-10 h-full flex items-center justify-center pt-24">
     <div class="max-w-3xl text-center">
       <FadeIn client:load>
         <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-          ¡Hola, soy Andrés 👋!
+          Tecnología, Servidores y Automatización con IA
         </h1>
       </FadeIn>
       <FadeIn client:load delay={0.2}>
         <p class="text-lg md:text-xl text-muted-foreground mb-8">
-          Creo contenido sobre tecnología, servidores, homelabs y
-          automatización con IA. Descubre cómo transformar tus ideas en
-          soluciones potentes y automatizadas. 🚀
+          Tutoriales, guías y recursos sobre homelab, servidores,
+          automatización con IA y desarrollo web. Descubre cómo transformar
+          tus proyectos en soluciones potentes y automatizadas.
         </p>
       </FadeIn>
 

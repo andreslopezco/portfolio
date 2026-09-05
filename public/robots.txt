@@ -6,21 +6,25 @@ Content-Signal: search=yes, ai-input=no, ai-train=no
 User-agent: GPTBot
 Allow: /
 Disallow: /api/
+Disallow: /*.md$
 Content-Signal: search=yes, ai-input=no, ai-train=no
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /api/
+Disallow: /*.md$
 Content-Signal: search=yes, ai-input=no, ai-train=no
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /api/
+Disallow: /*.md$
 Content-Signal: search=yes, ai-input=no, ai-train=no
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /api/
+Disallow: /*.md$
 Content-Signal: search=yes, ai-input=no, ai-train=no
 
 User-agent: Amazonbot
@@ -31,6 +35,7 @@ Content-Signal: search=yes, ai-input=no, ai-train=no
 User-agent: anthropic-ai
 Allow: /
 Disallow: /api/
+Disallow: /*.md$
 Content-Signal: search=yes, ai-input=no, ai-train=no
 
 User-agent: Bytespider
@@ -46,8 +51,10 @@ Content-Signal: search=yes, ai-input=no, ai-train=no
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /api/
+Disallow: /*.md$
 Content-Signal: search=yes, ai-input=no, ai-train=no
+
+Agentmap: https://andreslopez.co/.well-known/ai-catalog.json
 
 Sitemap: https://andreslopez.co/sitemap.xml
 Sitemap: https://andreslopez.co/image-sitemap.xml
-Agentmap: https://andreslopez.co/.well-known/ai-catalog.json

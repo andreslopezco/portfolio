@@ -7,19 +7,19 @@ import { SiYoutube, SiInstagram, SiX, SiTiktok, SiGithub } from 'react-icons/si'
   <!-- Redes sociales -->
   <div class="container mx-auto px-4 py-6 flex justify-center gap-4">
     <a href="https://www.youtube.com/@andreslopezco" target="_blank" rel="noopener noreferrer" aria-label="Visitar canal de YouTube">
-      <SiYoutube className="h-5 w-5 hover:text-foreground transition-colors" />
+      <SiYoutube className="h-5 w-5 hover:text-foreground transition-colors" aria-hidden="true" />
     </a>
     <a href="https://www.instagram.com/andreslopez.co" target="_blank" rel="noopener noreferrer" aria-label="Seguir en Instagram">
-      <SiInstagram className="h-5 w-5 hover:text-foreground transition-colors" />
+      <SiInstagram className="h-5 w-5 hover:text-foreground transition-colors" aria-hidden="true" />
     </a>
     <a href="https://x.com/andreslopez_co" target="_blank" rel="noopener noreferrer" aria-label="Seguir en X (Twitter)">
-      <SiX className="h-5 w-5 hover:text-foreground transition-colors" />
+      <SiX className="h-5 w-5 hover:text-foreground transition-colors" aria-hidden="true" />
     </a>
     <a href="https://tiktok.com/@andreslopezco" target="_blank" rel="noopener noreferrer" aria-label="Seguir en TikTok">
-      <SiTiktok className="h-5 w-5 hover:text-foreground transition-colors" />
+      <SiTiktok className="h-5 w-5 hover:text-foreground transition-colors" aria-hidden="true" />
     </a>
     <a href="https://github.com/andreslopezco" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil de GitHub">
-      <SiGithub className="h-5 w-5 hover:text-foreground transition-colors" />
+      <SiGithub className="h-5 w-5 hover:text-foreground transition-colors" aria-hidden="true" />
     </a>
   </div>
 
@@ -28,10 +28,10 @@ import { SiYoutube, SiInstagram, SiX, SiTiktok, SiGithub } from 'react-icons/si'
     <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
       <div class="text-xs flex flex-col items-center md:items-start gap-1">
         <p>
-          &copy; {new Date().getFullYear()} Andrés López. Todos los derechos reservados. <VersionInfo client:load />
+          &copy; {new Date().getFullYear()} Andrés López. Todos los derechos reservados. <VersionInfo client:idle />
         </p>
       </div>
-      <ThemeToggle client:load />
+      <ThemeToggle client:idle />
     </div>
   </div>
 </footer>
