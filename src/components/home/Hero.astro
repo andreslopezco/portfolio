@@ -56,7 +56,7 @@ import FadeIn from "@/components/react/FadeIn";
       </FadeIn>
 
       <FadeIn client:load delay={0.4}>
-        <div class="flex justify-center gap-4 flex-wrap">
+        <div class="flex justify-center">
           <a
             href="https://www.youtube.com/@andreslopezco/videos"
             target="_blank"
@@ -71,22 +71,6 @@ import FadeIn from "@/components/react/FadeIn";
               <div class="shimmer"></div>
               <span class="flex items-center gap-2 relative z-10">
                 Ver videos
-                <ArrowRight client:only="react" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </Button>
-          </a>
-          <a
-            href="#servicios"
-            aria-label="Explora mis servicios"
-          >
-            <Button
-              client:only="react"
-              variant="outline"
-              size="lg"
-              className="px-4 group"
-            >
-              <span class="flex items-center gap-2">
-                Explora mis servicios
                 <ArrowRight client:only="react" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
             </Button>
