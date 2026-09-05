@@ -123,6 +123,9 @@ function serveStatic(request, response, staticRoot, pathname) {
     headers.Link = DISCOVERY_LINKS;
     headers.Vary = "Accept";
   }
+  if (pathname.startsWith("/_astro/")) {
+    headers["Cache-Control"] = "public, max-age=31536000, immutable";
+  }
   if (negotiatedPath.startsWith("/.well-known/")) headers["Access-Control-Allow-Origin"] = "*";
   response.writeHead(200, headers);
   if (request.method === "HEAD") return response.end();

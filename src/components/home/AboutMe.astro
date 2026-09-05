@@ -16,11 +16,14 @@ const skills = [
 ---
 <div class="py-16 space-y-8">
   <!-- Header Section (rendered as native HTML) -->
-  <FadeIn client:load>
+  <FadeIn client:idle>
     <div class="space-y-4 mb-12">
       <h2 class="text-3xl font-bold tracking-tight">Sobre mí</h2>
       <p class="text-lg text-muted-foreground leading-relaxed">
-        👋 ¡Hola! Soy Andrés López, un apasionado por la tecnología desde que tengo memoria. Además de lo técnico, me apasiona combinar ese conocimiento con lo que elegí como carrera profesional: los Negocios Internacionalales y la Economía. Esta mezcla me permite crear soluciones no solo eficientes desde el lado tecnológico, sino también estratégicas y sostenibles desde la perspectiva empresarial.
+        👋 ¡Hola! Soy Andrés López, apasionado por la tecnología, los servidores,
+        los homelabs y la automatización con IA. Combino mi experiencia técnica con
+        mi formación en Negocios Internacionales y Economía para crear soluciones
+        eficientes, estratégicas y sostenibles para Latinoamérica.
       </p>
     </div>
   </FadeIn>
@@ -28,11 +31,11 @@ const skills = [
   <div class="grid lg:grid-cols-3 gap-8 items-start">
     <!-- Left Column: Image + Skills -->
     <div class="row-span-2">
-      <FadeIn client:load delay={0.2}>
+      <FadeIn client:idle delay={0.2}>
         <div class="space-y-6">
           <div class="relative aspect-square">
             <div class="rounded-2xl overflow-hidden border-2 border-primary/20 bg-primary/5 h-full">
-              <img src="/profile.webp" alt="Andrés López" class="w-full h-full object-cover object-top" />
+              <img src="/profile.webp" alt="Andrés López" width="1440" height="1800" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
             </div>
             <!-- Decorative Elements -->
             <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
@@ -41,7 +44,7 @@ const skills = [
           <!-- Skills Grid -->
           <div class="flex flex-wrap gap-2">
             {skills.map((skill) => (
-              <Badge client:load key={skill} variant="secondary" className="text-sm">
+              <Badge client:idle key={skill} variant="secondary" className="text-sm">
                 {skill}
               </Badge>
             ))}
@@ -52,44 +55,43 @@ const skills = [
 
     <!-- Right Side: Cards -->
     <div class="lg:col-span-2 grid sm:grid-cols-2 gap-8 content-start">
-      <FadeIn client:load delay={0.4}>
-        <Card client:load className="bg-card/50 backdrop-blur h-full">
-          <CardContent client:load className="pt-2">
-            <h3 class="font-semibold text-lg mb-2">👨‍💻 Tecnología</h3>
+      <FadeIn client:idle delay={0.4}>
+        <Card client:idle className="bg-card/50 backdrop-blur h-full">
+          <CardContent client:idle className="pt-2">
+            <h3 class="font-semibold text-lg mb-2">Tecnología y servidores</h3>
             <p class="text-muted-foreground">
-              Me encanta experimentar con sistemas, virtualización y herramientas de código abierto. Siempre estoy buscando nuevas formas de construir entornos eficientes, estables y escalables.
+              Apasionado por experimentar con servidores, virtualización con Proxmox y herramientas open source. Disfruto construyendo entornos eficientes, estables y escalables para homelab y producción.
             </p>
           </CardContent>
         </Card>
       </FadeIn>
 
-      <FadeIn client:load delay={0.5}>
-        <Card client:load className="bg-card/50 backdrop-blur h-full">
-          <CardContent client:load className="pt-2">
-            <h3 class="font-semibold text-lg mb-2">🚀 Automatización</h3>
+      <FadeIn client:idle delay={0.5}>
+        <Card client:idle className="bg-card/50 backdrop-blur h-full">
+          <CardContent client:idle className="pt-2">
+            <h3 class="font-semibold text-lg mb-2">Automatización con IA</h3>
             <p class="text-muted-foreground">
-              Soy fan de la optimización. Uso n8n, IA y APIs para automatizar procesos, ahorrar tiempo y mejorar flujos de trabajo tanto personales como empresariales.
+              Apasionado por la optimización. Uso n8n, APIs e inteligencia artificial para automatizar procesos, ahorrar tiempo y mejorar flujos de trabajo personales y empresariales.
             </p>
           </CardContent>
         </Card>
       </FadeIn>
 
       <div class="sm:col-span-2">
-        <FadeIn client:load delay={0.6}>
-          <Card client:load className="bg-card/50 backdrop-blur h-full">
-            <CardContent client:load className="pt-2">
-            <h3 class="font-semibold text-lg mb-2">🎯 Misión</h3>
+        <FadeIn client:idle delay={0.6}>
+          <Card client:idle className="bg-card/50 backdrop-blur h-full">
+            <CardContent client:idle className="pt-2">
+            <h3 class="font-semibold text-lg mb-2">Misión</h3>
             <p class="text-muted-foreground">
-              Mi misión es clara: hacer que la tecnología sea accesible y comprensible para todos, especialmente en Latinoamérica, donde el talento abunda pero muchas veces faltan oportunidades.
+              Mi objetivo: hacer que la tecnología, los servidores y la automatización sean accesibles para todos, especialmente en Latinoamérica, donde el talento abunda pero faltan oportunidades.
             </p>
             <br />
             <p class="text-muted-foreground">
-              Quiero que más emprendedores, creadores y profesionales puedan usar la tecnología como aliada para hacer crecer sus ideas y transformar su realidad.
+              Quiero que más emprendedores, creadores y profesionales usen la tecnología como aliada para hacer crecer sus proyectos y transformar su realidad.
             </p>
           </CardContent>
         </Card>
       </FadeIn>
       </div>
     </div>
-  </div>
 </div>

@@ -94,13 +94,14 @@ const YoutubeCarousel = () => {
                           src={video.thumbnail}
                           alt={video.title}
                           className="w-full h-48 object-cover rounded-t-xl"
+                          loading="lazy"
+                          decoding="async"
                           onError={(e) => {
                             // Fallback for failed image loads
                             const target = e.target as HTMLImageElement;
                             target.onerror = null; // Prevent infinite loop
                             target.src = "/logo.webp"; // Use logo as fallback
                           }}
-                          loading="lazy"
                         />
                         {video.id.includes("UC") && (
                           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
